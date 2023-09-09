@@ -2,6 +2,7 @@ import "./reset.css";
 import "./globals.css";
 import type { Metadata } from "next";
 import { montserrat, libre } from "@/lib/font";
+import { Footer, Navbar } from "@/components";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} ${libre.variable}`}>
-        {children}
+        <Navbar />
+        <main style={{ paddingTop: "7rem" }}>{children}</main>
+        <Footer />
       </body>
     </html>
   );

@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <div className={styles.main}>
       <h1>Hello</h1>
       <h2>Hi there</h2>
       <h3>Let&apos;s Go</h3>
@@ -13,6 +13,6 @@ export default function Home() {
         facere, non impedit ex iusto pariatur dolore distinctio, quod facilis,
         id accusantium provident.
       </p>
-    </main>
+    </div>
   );
 }

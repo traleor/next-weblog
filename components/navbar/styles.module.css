@@ -1,0 +1,138 @@
+.navbar {
+  padding: 1.5rem var(--content-margin);
+  display: flex;
+  display: -webkit-flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.9);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 0.1rem 1rem rgba(0, 0, 0, 0.14);
+}
+
+.navbar input {
+  padding: 0.6rem 1rem;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  outline: none;
+  color: var(--dark-gray);
+  border: none;
+  padding-right: 2rem;
+  z-index: 9999;
+}
+
+.navbar input::placeholder,
+.navbar input::-webkit-input-placeholder {
+  color: var(--light-gray);
+}
+
+.search {
+  position: relative;
+}
+
+.search button[type="submit"] {
+  position: absolute;
+  right: 0.3rem;
+  top: 0.85rem;
+  overflow: hidden;
+  width: 40px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  z-index: 9999;
+}
+
+.navbar .menu {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar .menu li:not(:last-of-type) {
+  margin-right: 4rem;
+}
+
+.navbar .menu li a {
+  color: var(--dark-gray);
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+  transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+}
+
+.navbar .menu li a:hover,
+.navbar .menu li a:focus-within {
+  color: var(--primary);
+}
+
+.only_mobile {
+  display: none;
+}
+
+/* CHECKBOX HACK */
+.toggle {
+  display: none;
+}
+
+/*HAMBURGER MENU*/
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  user-select: none;
+}
+
+/* APPLYING MEDIA QUERIES */
+
+@media (max-width: 768px) {
+  .navbar .logo h2 {
+    font-size: 1.4rem;
+  }
+  .search {
+    display: none;
+  }
+  .only_mobile {
+    display: block;
+  }
+  /*  */
+  .navbar .menu {
+    display: none;
+  }
+
+  .navbar .menu li:not(:last-of-type) {
+    margin-right: 0rem;
+  }
+
+  .toggle:checked ~ .menu {
+    gap: 3rem;
+    position: absolute;
+    right: 0;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -ms-flexflow: column;
+    width: 100%;
+    top: 6rem;
+    z-index: 9999;
+    background: rgba(91, 192, 190, 0.7);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    padding: 3rem;
+    padding-bottom: 2rem;
+  }
+  .toggle:checked ~ .menu li a {
+    color: var(--white);
+  }
+  .hamburger {
+    display: block;
+  }
+}

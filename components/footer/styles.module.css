@@ -1,0 +1,72 @@
+.footer {
+  background: var(--background2);
+}
+
+.component {
+  display: flex;
+  display: -ms-flexbox;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  padding: 2rem var(--content-margin);
+}
+
+.component .head h2 {
+  margin-bottom: 1rem;
+  font-size: var(--normal-font-size);
+  color: var(--black);
+  font-weight: 500;
+}
+
+.component h4,
+.component a {
+  color: var(--tertiary);
+  font-size: calc(var(--normal-font-size) - 0.2rem);
+  margin-bottom: 1rem;
+  transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+}
+
+.component a {
+  white-space: nowrap;
+}
+
+.component a:hover,
+.component a:focus-within {
+  color: var(--white);
+}
+
+.component h4 {
+  width: 300px;
+  font-weight: 400;
+}
+
+.component > div {
+  margin: 2rem 0;
+  margin-right: 3rem;
+}
+
+.component .content {
+  display: flex;
+  display: -ms-flexbox;
+  flex-direction: column;
+  -ms-flex-direction: column;
+}
+
+.mark {
+  padding: 3rem var(--content-margin);
+}
+
+.mark h4 {
+  text-align: center;
+}
+.mark h4 a {
+  color: var(--white);
+  font-weight: 400;
+}
+
+@media screen and (max-width: 350px) {
+  .component h4 {
+    width: 100%;
+  }
+}
