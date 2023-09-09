@@ -1,0 +1,286 @@
+/*  */
+:root {
+  --primary: #0b132b;
+  --secondary: #1c2541;
+  --tertiary: #5bc0be;
+
+  /* Fonts */
+  /* Variable added in layout.tsx */
+
+  /* Colors */
+  --background: #ffffff;
+  --background2: #3a506b;
+  --white: white;
+  --black: black;
+  --light-gray: #bdbdbd;
+  --dark-gray: #807f91;
+  --success: #005641;
+  --error: #df3c46;
+
+  /*Font sizes */
+  /* https://enzedonline.com/en/tech-blog/create-responsive-font-sizes-based-on-the-viewport/ */
+  --font-size-1: clamp(2rem, 1.7993rem + 0.8451vw, 2.75rem);
+  --font-size-2: clamp(1.8rem, 1.6261rem + 0.7324vw, 2.45rem);
+  --font-size-3: clamp(1.6rem, 1.4662rem + 0.5634vw, 2.1rem);
+  --font-size-4: clamp(1.4rem, 1.293rem + 0.4507vw, 1.8rem);
+  --font-size-5: clamp(1.2rem, 1.1331rem + 0.2817vw, 1.45rem);
+  --font-size-6: clamp(0.9rem, 0.8732rem + 0.1127vw, 1rem);
+  --font-size-body: clamp(1rem, 0.9599rem + 0.169vw, 1.15rem);
+
+  /* Boder Radius */
+  --border-radius: 10px;
+
+  /* Body Margin & Padding Percentage */
+  --content-margin: 6vw;
+}
+
+/* Large screens */
+@media screen and (min-width: 1920px) {
+  :root {
+    --border-radius: 10px;
+  }
+}
+@media screen and (max-width: 1280px) {
+  :root {
+    --border-radius: 10px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  :root {
+    --border-radius: 10px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  :root {
+    --border-radius: 10px;
+  }
+}
+@media screen and (max-width: 650px) {
+  :root {
+    --content-margin: 4vw;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-weight: 400;
+  font-size: var(--font-size-body);
+  /* Make sure it works with font: inherit; */
+  font-family: var(--montserrat);
+  /* Recommended to have a mininum of 1.5 for legibility */
+  line-height: 1.5;
+  background: var(--background);
+}
+
+button {
+  padding: 0.5rem 2rem;
+  border-radius: var(--border-radius);
+  color: var(--black);
+  margin-right: 1rem;
+  font-size: 18px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: nowrap; /** ********************/
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  will-change: background-color;
+}
+
+button.primary {
+  color: var(--white);
+  background: var(--primary);
+}
+
+button.secondary {
+  color: var(--white);
+  background: var(--secondary);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+button:hover,
+button:focus-within {
+  color: var(--black);
+  background-color: var(--tertiary);
+}
+
+button:disabled {
+  background-color: var(--light-gray);
+  color: var(--black);
+  cursor: not-allowed;
+}
+@media (max-width: 400px) {
+  button {
+    margin-top: 0.6rem;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: var(--secondary);
+}
+a:hover {
+  color: var(--primary);
+}
+
+input,
+select {
+  font-size: 15px;
+  line-height: 1.3;
+  /* This removes the default select drop dropdown */
+  appearance: none;
+  background-color: var(--white);
+  border: 1px solid var(--primary);
+}
+
+b {
+  font-weight: bolder;
+}
+
+h1 {
+  margin: 2rem 0;
+  font-weight: bolder;
+  font-family: var(--libre);
+  font-size: var(--font-size-1);
+}
+
+h2 {
+  margin: 1.8rem 0;
+  font-weight: bolder;
+  font-family: var(--libre);
+  font-size: var(--font-size-2);
+}
+
+h3 {
+  margin: 1.6rem 0;
+  font-weight: bold;
+  font-size: var(--font-size-3);
+}
+
+h4 {
+  margin: 1.4rem 0;
+  font-weight: bold;
+  font-size: var(--font-size-4);
+}
+
+h5 {
+  margin: 1.2rem 0;
+  font-size: var(--font-size-5);
+}
+
+h6 {
+  margin: 0.9rem 0;
+  font-size: var(--font-size-6);
+}
+
+p,
+blockquote,
+strong,
+b,
+li,
+label,
+caption,
+tbody,
+tfoot,
+thead,
+article,
+figcaption,
+textarea,
+select,
+option,
+button,
+input {
+  /* Seems not to be overridable */
+  /* margin: 1rem 0; */
+  font-size: var(--font-size-body);
+}
+
+a,
+small {
+  margin: 0.9rem 0;
+  font-size: var(--font-size-6);
+}
+
+iframe,
+video {
+  width: 100%;
+}
+
+.default-padding {
+  padding: 2rem var(--content-margin);
+}
+
+.full-width {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+  display: -ms-flexbox;
+}
+
+.flex-one {
+  flex: 1;
+  -ms-flex: 1;
+}
+
+.flex-one-half {
+  flex: 1.5;
+  -ms-flex: 1.5;
+}
+
+.a-j-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.a-j-space-between {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-column {
+  flex-direction: column;
+  -ms-flex-direction: column;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.py-1 {
+  padding: 1rem 0;
+}
+
+.py-2 {
+  padding: 2rem 0;
+}
+
+.my-1 {
+  margin: 1rem 0;
+}
+
+.my-2 {
+  margin: 2rem 0;
+}
+
+.my-4 {
+  margin: 4rem 0;
+}
