@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { Card, Grid } from "@/components";
 
-export default function Home() {
+export default function Page() {
   return (
     <div className={styles.home__page}>
       <div className={styles.landing}>
@@ -15,8 +15,8 @@ export default function Home() {
           </p>
           <div className={styles.btn__group}>
             <Link href="/" passHref>
-              <button aria-label="Create Event" className="primary">
-                Create Event
+              <button aria-label="Join Community" className="primary">
+                Join Community
               </button>
             </Link>
             <Link href="/blogs" passHref>
