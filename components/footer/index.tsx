@@ -15,8 +15,8 @@ const Footer = () => {
           </div>
           <div>
             <h4>
-              We help you to find the best events in your city. We are here to
-              help you to find the best events in your city.
+              We help you to find the best blogs in your city. We are here to
+              help you to find the best blogs in your city.
             </h4>
           </div>
         </div>
