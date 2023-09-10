@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { cmsClient, CMSPageMeta, allBlogsMeta } from "@/lib";
+import { CMSPageMeta, allBlogsMeta } from "@/lib";
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_BASE_URL || "https://next-pro-weblog.vercel.app";

@@ -1,4 +1,10 @@
-import { CMSClient, CMSContents, CMSPageMeta, CMSContent, CMSMediaMeta } from "wagtail-js";
+import {
+  CMSClient,
+  CMSContents,
+  CMSPageMeta,
+  CMSContent,
+  CMSMediaMeta,
+} from "wagtail-js";
 
 const CMS_API_KEY = process.env.CMS_API_KEY || "";
 const CMS_API_URL = process.env.CMS_API_URL || "";
@@ -41,6 +47,14 @@ export const allBlogs = async (limit: number) => {
     ],
     limit: limit,
   });
+};
+
+/*
+ * getBlog gets a single blog from the CMS by slug
+ * returns a promise of CMSContent
+ */
+export const getBlog = async (slug: string) => {
+  return await cmsClient.fetchPage(slug, { fields: ["*"] });
 };
 
 export type { CMSContents, CMSPageMeta, CMSContent, CMSMediaMeta };
