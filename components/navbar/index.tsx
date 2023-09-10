@@ -23,12 +23,10 @@ const Navbar = () => {
       </label>
       <ul className={`${styles.menu}`}>
         <li>
-          <Link href="/blog" passHref>
-            Tutorials
-          </Link>
+          <Link href="/blog">Tutorials</Link>
         </li>
         <li>
-          <Link href="/" passHref>
+          <Link href="/about" scroll={false}>
             About Us
           </Link>
         </li>
