@@ -24,9 +24,13 @@ const Footer = () => {
             <h2>About</h2>
           </div>
           <div className={styles.content}>
-            <Link href="/">Tutorials</Link>
-            <Link href="/">Resources</Link>
-            <Link href="/">Channel</Link>
+            <Link href="https://github.com/Academy-Omen">GitHub</Link>
+            <Link href="https://twitter.com/itz_omen/">
+              X (Fomerly Twitter)
+            </Link>
+            <Link href="https://www.youtube.com/c/AcademyOmen/">
+              Youtube Channel
+            </Link>
           </div>
         </div>
 
@@ -36,7 +40,7 @@ const Footer = () => {
           </div>
           <div className={styles.content}>
             <Link href="/">Home</Link>
-            <Link href="/">About</Link>
+            <Link href="/about">About</Link>
             <Link href="/">Contact</Link>
           </div>
         </div>

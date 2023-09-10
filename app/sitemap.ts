@@ -1,17 +1,13 @@
-import { cmsClient } from "@/lib";
 import { MetadataRoute } from "next";
-import { CMSPageMeta } from "wagtail-js";
+import { cmsClient, CMSPageMeta, allBlogsMeta } from "@/lib";
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_BASE_URL || "https://next-pro-weblog.vercel.app";
 
 // Read https://www.sitemaps.org/protocol.html
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const blogs = await cmsClient.fetchPages({
-    locale: "en",
-    order: "random",
-    type: "weblog.WeblogPage",
-  });
+  const blogs = await allBlogsMeta();
+  // console.log("BLOGS", JSON.stringify(blogs, null, 4));
 
   const blogSiteMaps: MetadataRoute.Sitemap = blogs.items.map((item) => {
     const meta = item.meta as CMSPageMeta;
@@ -22,8 +18,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5,
     };
   });
-
-  console.log("BLOGS 2", JSON.stringify(blogs, null, 4));
 
   return [
     {

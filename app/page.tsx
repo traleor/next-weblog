@@ -150,7 +150,11 @@ export default function Page() {
                 Let&apos;s build, create, and learn together. Welcome to Academy
                 Omen.
               </p>
-              <Link href="/" passHref>
+              <Link
+                href="https://discord.com/invite/UKaQs2WmvT"
+                passHref
+                target="_blank"
+              >
                 <button aria-label="show more" className="primary">
                   Join Discord Community
                 </button>
@@ -175,17 +179,17 @@ export default function Page() {
             <Card
               text="+ Follow"
               imgSource="/images/cover.png"
-              status="Lorem ipsum delor sit amet. Testing hard coded text"
-              title="John Wick"
-              path="/profile/123"
+              status="Experienced software engineer with a passion for Artificial Intelligence, and backend engineering"
+              title="Peng Boris"
+              path="https://www.linkedin.com/in/peng-boris-akebuon/"
               profilePic="/images/profile.png"
             />
             <Card
               text="+ Follow"
               imgSource="/images/cover.png"
-              status="Lorem ipsum delor sit amet. Testing hard coded text"
+              status="Legendary hitman with a lethal reputation, seeking justice and vengeance."
               title="John Wick"
-              path="/profile/123"
+              path="https://www.linkedin.com/in/peng-boris-akebuon/"
               profilePic="/images/profile.png"
             />
           </Grid>
@@ -198,7 +202,11 @@ export default function Page() {
         <div className={styles.headline}>
           <h2>Get Ready For Amazing Tutorials</h2>
           <h3>Wanna Ask Something 😃?</h3>
-          <Link href="/blogs" passHref>
+          <Link
+            href="https://discord.com/invite/UKaQs2WmvT"
+            passHref
+            target="_blank"
+          >
             <button aria-label="Join Discord Community" className="secondary">
               Join Discord Community
             </button>

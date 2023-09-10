@@ -6,8 +6,6 @@ import { Card, Grid } from "@/components";
 export default function Page() {
   return (
     <div className={styles.container}>
-      {/** ABOUT US SECTION *************************************************** */}
-
       <section id="about-us" className={styles.general}>
         <div className={styles.headline}>
           <h2>About Us</h2>
@@ -44,7 +42,11 @@ export default function Page() {
                 Let&apos;s build, create, and learn together. Welcome to Academy
                 Omen.
               </p>
-              <Link href="/" passHref>
+              <Link
+                href="https://discord.com/invite/UKaQs2WmvT"
+                passHref
+                target="_blank"
+              >
                 <button aria-label="show more" className="primary">
                   Join Discord Community
                 </button>
@@ -69,24 +71,22 @@ export default function Page() {
             <Card
               text="+ Follow"
               imgSource="/images/cover.png"
-              status="Lorem ipsum delor sit amet. Testing hard coded text"
-              title="John Wick"
-              path="/profile/123"
+              status="Experienced software engineer with a passion for Artificial Intelligence, and backend engineering"
+              title="Peng Boris"
+              path="https://www.linkedin.com/in/peng-boris-akebuon/"
               profilePic="/images/profile.png"
             />
             <Card
               text="+ Follow"
               imgSource="/images/cover.png"
-              status="Lorem ipsum delor sit amet. Testing hard coded text"
+              status="Legendary hitman with a lethal reputation, seeking justice and vengeance."
               title="John Wick"
-              path="/profile/123"
+              path="https://www.linkedin.com/in/peng-boris-akebuon/"
               profilePic="/images/profile.png"
             />
           </Grid>
         </div>
       </section>
-
-      {/** FREQUENTLY ASKED SECTION *************************************************** */}
 
       <section className={styles.general}>
         <div className={styles.headline}>

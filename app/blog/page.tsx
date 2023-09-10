@@ -18,7 +18,8 @@ export default function Page() {
           <select name="filter" id="filter">
             <option value="">Sort By</option>
             <option value="date">Date</option>
-            <option value="tag">Tag</option>
+            <option value="tag">Category</option>
+            <option value="tag">Tags</option>
           </select>
         </div>
       </div>
