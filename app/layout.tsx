@@ -1,7 +1,7 @@
 import "./reset.css";
 import "./globals.css";
 import type { Metadata } from "next";
-import { montserrat, libre, source_code } from "@/lib/font";
+import { montserrat, libre, source_code } from "@/lib";
 import { Footer, Navbar } from "@/components";
 
 export const metadata: Metadata = {

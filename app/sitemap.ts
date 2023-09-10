@@ -1,17 +1,30 @@
+import { cmsClient } from "@/lib";
 import { MetadataRoute } from "next";
+import { CMSPageMeta } from "wagtail-js";
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_BASE_URL || "https://next-pro-weblog.vercel.app";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const blogs = [
-    {
-      url: BASE_URL + "/blog/abc",
-    },
-    {
-      url: BASE_URL + "/blog/abc",
-    },
-  ];
+// Read https://www.sitemaps.org/protocol.html
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const blogs = await cmsClient.fetchPages({
+    locale: "en",
+    order: "random",
+    type: "weblog.WeblogPage",
+  });
+
+  const blogSiteMaps: MetadataRoute.Sitemap = blogs.items.map((item) => {
+    const meta = item.meta as CMSPageMeta;
+    return {
+      url: BASE_URL + "/blog/" + meta.slug,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.5,
+    };
+  });
+
+  console.log("BLOGS 2", JSON.stringify(blogs, null, 4));
+
   return [
     {
       url: BASE_URL,
@@ -31,12 +44,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.5,
     },
-    // create a sitemap for each blog
-    ...blogs.map((blog) => ({
-      url: blog.url,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.7,
-    })),
+    ...blogSiteMaps,
   ];
 }
