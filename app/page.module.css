@@ -80,11 +80,10 @@
 }
 
 .headline h3 {
-  color: var(---secondary);
-  font-size: var(--normal-font-size);
+  font-size: var(--font-size-body);
   font-weight: 400;
-  width: 500px;
   text-align: center;
+  max-width: 80%;
 }
 
 .illustration img {

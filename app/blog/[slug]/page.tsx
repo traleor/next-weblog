@@ -44,7 +44,7 @@ export default async function Page({ params: { slug } }: Props) {
         />
       </div>
       <div className={styles.breadcrumbs}>
-        <Link href={"/"}>Blog</Link>{" "}
+        <Link href={"/blogs"}>Blogs</Link>{" "}
         <svg
           width="21"
           height="21"

@@ -66,8 +66,9 @@ export default function Page() {
         <div className={styles.headline}>
           <h2>Featured Tutorials</h2>
           <h3>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi,
-            corporis.
+            Discover a curated selection of tutorials to elevate your software
+            engineering skills. Explore topics from Typescript to Python and
+            beyond. Dive in and boost your expertise today.
           </h3>
         </div>
         <div className={styles.wrapper}>
@@ -117,8 +118,8 @@ export default function Page() {
         <div className={styles.headline}>
           <h2>About Us</h2>
           <h3>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi,
-            corporis.
+            Crafting Success Stories Through Code: Your Path to Software
+            Excellence Begins with Us
           </h3>
         </div>
         <div className={styles.wrapper}>
@@ -133,23 +134,25 @@ export default function Page() {
               />
             </div>
             <div className={styles.content}>
-              <h2>Explore Popular Blogs</h2>
+              <h2>Discover Who We Are</h2>
               <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum
-                pariatur id, tempora minima delectus expedita repudiandae
-                officia voluptatum fugiat? Rerum? Lorem ipsum dolor sit amet
-                consectetur, adipisicing elit. Fuga, corporis. Lorem ipsum dolor
-                sit amet consectetur, adipisicing elit. Pariatur, consequuntur.
-                Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
-                consectetur, adipisicing elit. Cum pariatur id, tempora minima
-                delectus expedita repudiandae officia voluptatum fugiat? Rerum?
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga,
-                corporis. Lorem ipsum dolor sit amet consectetur, adipisicing
-                elit. Pariatur, consequuntur. Lorem ipsum dolor sit amet.
+                At Academy Omen, we&apos;re on a mission to empower and inspire
+                software engineers at every stage of their journey. Our passion
+                is to provide world-class tutorials and projects that help you
+                master the art of software engineering. With a focus on modern
+                technologies like Blockchain, AI, and programming languages such
+                as Python, Go, TypeScript, and Solidity, we&apos;re here to
+                guide you to success. Our community of experienced software
+                engineers and enthusiastic learners is the heart of Academy
+                Omen. Together, we aim to create a dynamic learning environment
+                where creativity and innovation flourish. Join us on this
+                exciting adventure into the world of software engineering.
+                Let&apos;s build, create, and learn together. Welcome to Academy
+                Omen.
               </p>
               <Link href="/" passHref>
                 <button aria-label="show more" className="primary">
-                  Show More
+                  Join Discord Community
                 </button>
               </Link>
             </div>
@@ -157,14 +160,14 @@ export default function Page() {
         </div>
       </section>
 
-      {/** TOP ORGANIZERS SECTION *************************************************** */}
+      {/** TOP CREATORS SECTION *************************************************** */}
 
       <section className={styles.general}>
         <div className={styles.headline}>
-          <h2>Top Editors</h2>
+          <h2>Top Content Creators</h2>
           <h3>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi,
-            corporis.
+            Exploring Our Pioneering Content Creators: The Masters Behind Our
+            Top Content
           </h3>
         </div>
         <div className={styles.wrapper}>
@@ -195,9 +198,11 @@ export default function Page() {
         <div className={styles.headline}>
           <h2>Get Ready For Amazing Tutorials</h2>
           <h3>Wanna Ask Something 😃?</h3>
-          <button aria-label="Join Discord Community" className="secondary">
-            Join Discord Community
-          </button>
+          <Link href="/blogs" passHref>
+            <button aria-label="Join Discord Community" className="secondary">
+              Join Discord Community
+            </button>
+          </Link>
         </div>
       </section>
     </div>
