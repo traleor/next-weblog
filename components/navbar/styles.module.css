@@ -18,7 +18,7 @@
 .navbar input {
   padding: 0.6rem 1rem;
   width: 100%;
-  background: rgba(0, 0, 0, 0.1);
+  background: var(--light-gray);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-radius: 10px;
@@ -31,7 +31,8 @@
 
 .navbar input::placeholder,
 .navbar input::-webkit-input-placeholder {
-  color: var(--light-gray);
+  color: var(--dark-gray);
+  font-size: var(--font-size-6);
 }
 
 .search {

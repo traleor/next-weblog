@@ -61,7 +61,7 @@ export default function Page() {
         </div>
 
         <div className={styles.list}>
-          <Grid num={2}>
+          <Grid num={3} style={{ gap: "2rem" }}>
             <Card
               key={1}
               imgSource={"/images/cover.png"}
