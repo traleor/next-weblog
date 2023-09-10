@@ -11,17 +11,20 @@
   padding: 2rem var(--content-margin);
 }
 
-.component .head h2 {
-  margin-bottom: 1rem;
-  font-size: var(--normal-font-size);
-  color: var(--black);
-  font-weight: 500;
+.component .head {
+  color: var(--white);
 }
 
-.component h4,
+.component .head h2 {
+  color: var(--white);
+  font-weight: 500;
+  font-size: var(--font-size-4);
+}
+
+.component h3,
 .component a {
   color: var(--tertiary);
-  font-size: calc(var(--normal-font-size) - 0.2rem);
+  font-size: var(--font-size-body);
   margin-bottom: 1rem;
   transition: 0.2s ease-in-out;
   -webkit-transition: 0.2s ease-in-out;
@@ -36,7 +39,7 @@
   color: var(--white);
 }
 
-.component h4 {
+.component h3 {
   width: 300px;
   font-weight: 400;
 }
@@ -57,16 +60,16 @@
   padding: 3rem var(--content-margin);
 }
 
-.mark h4 {
+.mark h3 {
   text-align: center;
 }
-.mark h4 a {
+.mark h3 a {
   color: var(--white);
   font-weight: 400;
 }
 
 @media screen and (max-width: 350px) {
-  .component h4 {
+  .component h3 {
     width: 100%;
   }
 }

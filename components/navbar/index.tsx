@@ -12,7 +12,7 @@ const Navbar = () => {
       </div>
 
       <div className={styles.search}>
-        <input type="search" placeholder="Search... " />
+        <input type="search" placeholder="Search tutorials " />
         <button aria-label="search" type="submit">
           <i className="fas fa-search" aria-hidden="true"></i>
         </button>
@@ -24,7 +24,7 @@ const Navbar = () => {
       <ul className={`${styles.menu}`}>
         <li>
           <Link href="/blog" passHref>
-            Blogs
+            Tutorials
           </Link>
         </li>
         <li>
@@ -33,7 +33,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <button className="primary">Join Community</button>
+          <button className="primary">Watch Tutorial</button>
         </li>
       </ul>
     </nav>

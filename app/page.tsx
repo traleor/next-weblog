@@ -5,23 +5,27 @@ import { Card, Grid } from "@/components";
 
 export default function Page() {
   return (
-    <div className={styles.home__page}>
+    <div className={styles.container}>
       <div className={styles.landing}>
         <div className={styles.hero_content}>
-          <h1>Create, Sell & Share Your blogs for Free</h1>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta
-            voluptatum quo molestiae possimus eum deserunt.
-          </p>
+          <h1>
+            <span>World-Class</span> Tutorials for Elevating Your Software
+            Engineering Skills
+          </h1>
+          <h2>
+            Discover the art of building modern, high-performance web
+            applications with our expert tutorials. Stay ahead in the tech world
+            with fresh content every two weeks!
+          </h2>
           <div className={styles.btn__group}>
             <Link href="/" passHref>
-              <button aria-label="Join Community" className="primary">
-                Join Community
+              <button aria-label="Watch Tutorial" className="primary">
+                Watch Tutorial
               </button>
             </Link>
             <Link href="/blogs" passHref>
-              <button aria-label="Explore Now" className="secondary">
-                Explore Now
+              <button aria-label="Explore More" className="secondary">
+                Explore More
               </button>
             </Link>
           </div>
@@ -29,8 +33,8 @@ export default function Page() {
         <div className={styles.image}>
           <Image
             loading="lazy"
-            width="400"
-            height="400"
+            width="1920"
+            height="1080"
             src="/images/cover.png"
             alt="illustration"
           />
@@ -60,7 +64,7 @@ export default function Page() {
 
       <section className={styles.general}>
         <div className={styles.headline}>
-          <h2>Featured blogs</h2>
+          <h2>Featured Tutorials</h2>
           <h3>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi,
             corporis.
@@ -101,7 +105,7 @@ export default function Page() {
                 marginTop: "2rem",
               }}
             >
-              View All blogs
+              View All Tutorials
             </button>
           </Link>
         </div>
@@ -129,7 +133,7 @@ export default function Page() {
               />
             </div>
             <div className={styles.content}>
-              <h2>Explore Popular blogs</h2>
+              <h2>Explore Popular Blogs</h2>
               <p>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum
                 pariatur id, tempora minima delectus expedita repudiandae
@@ -157,7 +161,7 @@ export default function Page() {
 
       <section className={styles.general}>
         <div className={styles.headline}>
-          <h2>Top Organizers</h2>
+          <h2>Top Editors</h2>
           <h3>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi,
             corporis.
@@ -191,8 +195,8 @@ export default function Page() {
         <div className={styles.headline}>
           <h2>Get Ready For Amazing Tutorials</h2>
           <h3>Wanna Ask Something 😃?</h3>
-          <button aria-label="Join Community" className="secondary">
-            Join Community
+          <button aria-label="Join Discord Community" className="secondary">
+            Join Discord Community
           </button>
         </div>
       </section>
