@@ -76,10 +76,36 @@ export default async function Page({ params: { slug } }: Props) {
           perferendis iste quos amet necessitatibus quibusdam, eius impedit qui
           autem laboriosam aspernatur fugit!
         </p>
+        <section className="default-padding full-width">
+          <pre>
+            <code className="language-javascript">
+              {` function copyLink() {
+        var dummy = document.createElement("input"),
+        text = window.location.href;
+        document.body.appendChild(dummy);
+        dummy.value = text;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+        alert("Link copied to clipboard");
+}`}
+            </code>
+          </pre>
+        </section>
+        <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</h3>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus
+          nobis officiis molestias commodi atque nostrum ullam assumenda
+          perferendis iste quos amet necessitatibus quibusdam, eius impedit qui
+          autem laboriosam aspernatur fugit!
+        </p>
       </section>
       <div className={styles.tags}>
         <span>business</span> <span>business</span> <span>business</span>{" "}
         <span>business</span>
+      </div>
+      <div className={styles.comments}>
+        <div id="remark42"></div>
       </div>
       <div className={styles.related}>
         <h2>Related Tutorials</h2>

@@ -25,10 +25,9 @@ const Footer = () => {
             <h2>About</h2>
           </div>
           <div className={styles.content}>
-            <Link href="/">Product</Link>
-            <Link href="/">Resource</Link>
-            <Link href="/">Terms and Conditions</Link>
-            <Link href="/">FAQ</Link>
+            <Link href="/">Tutorials</Link>
+            <Link href="/">Resources</Link>
+            <Link href="/">Channel</Link>
           </div>
         </div>
 

@@ -17,6 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="author" content="Academy Omen" />
+      </head>
       <body className={`${montserrat.variable} ${libre.variable}`}>
         <Navbar />
         <main style={{ paddingTop: "7rem" }}>{children}</main>
