@@ -23,7 +23,7 @@ export default function Page() {
                 Watch Tutorial
               </button>
             </Link>
-            <Link href="/blogs" passHref>
+            <Link href="/blog" passHref>
               <button aria-label="Explore More" className="secondary">
                 Explore More
               </button>
@@ -98,7 +98,7 @@ export default function Page() {
           </Grid>
         </div>
         <div className={styles.headline}>
-          <Link href="/blogs" passHref>
+          <Link href="/blog" passHref>
             <button
               aria-label="show more"
               className="secondary"

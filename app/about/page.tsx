@@ -92,7 +92,7 @@ export default function Page() {
         <div className={styles.headline}>
           <h2>Get Ready For Amazing Tutorials</h2>
           <h3>Wanna Ask Something 😃?</h3>
-          <Link href="/blogs" passHref>
+          <Link href="/blog" passHref>
             <button aria-label="Join Discord Community" className="secondary">
               Join Discord Community
             </button>
