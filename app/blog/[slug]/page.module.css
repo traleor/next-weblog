@@ -44,6 +44,12 @@
   flex-wrap: wrap;
   margin: 2rem 0;
 }
+.tags span a {
+  margin: 0;
+}
+.tags span a:hover {
+  color: var(--tertiary);
+}
 .tags span {
   gap: 1rem;
   color: #0f254a;
@@ -59,7 +65,7 @@
 }
 
 .related {
-  margin: 6rem 0;
+  margin: 0 0 6rem 0;
 }
 
 @media screen and (max-width: 750px) {

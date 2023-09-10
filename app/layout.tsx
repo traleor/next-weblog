@@ -1,7 +1,7 @@
 import "./reset.css";
 import "./globals.css";
 import type { Metadata } from "next";
-import { montserrat, libre } from "@/lib/font";
+import { montserrat, libre, source_code } from "@/lib/font";
 import { Footer, Navbar } from "@/components";
 
 export const metadata: Metadata = {
@@ -20,7 +20,9 @@ export default function RootLayout({
       <head>
         <meta name="author" content="Academy Omen" />
       </head>
-      <body className={`${montserrat.variable} ${libre.variable}`}>
+      <body
+        className={`${montserrat.variable} ${libre.variable} ${source_code.variable}`}
+      >
         <Navbar />
         <main style={{ paddingTop: "7rem" }}>{children}</main>
         <Footer />

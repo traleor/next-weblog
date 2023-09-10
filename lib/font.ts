@@ -1,4 +1,8 @@
-import { Montserrat, Libre_Baskerville } from "next/font/google";
+import {
+  Montserrat,
+  Libre_Baskerville,
+  Source_Code_Pro,
+} from "next/font/google";
 
 export const montserrat = Montserrat({
   display: "swap",
@@ -38,5 +42,20 @@ export const libre = Libre_Baskerville({
     "Helvetica",
     "Arial",
     "sans-serif",
+  ],
+});
+
+export const source_code = Source_Code_Pro({
+  display: "swap",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--source-code",
+  fallback: [
+    "Menlo",
+    "Monaco",
+    "Consolas",
+    "Liberation Mono",
+    "Courier New",
+    "monospace",
   ],
 });

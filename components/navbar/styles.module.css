@@ -21,7 +21,7 @@
   background: var(--light-gray);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   outline: none;
   color: var(--dark-gray);
   border: none;

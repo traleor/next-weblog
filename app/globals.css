@@ -28,34 +28,12 @@
   --font-size-body: clamp(1rem, 0.9599rem + 0.169vw, 1.15rem);
 
   /* Boder Radius */
-  --border-radius: 0.1rem;
+  --border-radius: 0.15rem;
 
   /* Body Margin & Padding Percentage */
   --content-margin: 6vw;
 }
 
-/* Large screens */
-@media screen and (min-width: 1920px) {
-  :root {
-    --border-radius: 10px;
-  }
-}
-@media screen and (max-width: 1280px) {
-  :root {
-    --border-radius: 10px;
-  }
-}
-@media screen and (max-width: 1024px) {
-  :root {
-    --border-radius: 10px;
-  }
-}
-
-@media screen and (max-width: 760px) {
-  :root {
-    --border-radius: 10px;
-  }
-}
 @media screen and (max-width: 650px) {
   :root {
     --content-margin: 4vw;
@@ -212,6 +190,10 @@ small {
 iframe,
 video {
   width: 100%;
+}
+
+code {
+  font-family: var(--source-code);
 }
 
 .default-padding {
