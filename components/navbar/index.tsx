@@ -1,22 +1,29 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./styles.module.css";
+import { LogoIcon, SearchIcon } from "..";
 
 const Navbar = () => {
   return (
     <nav role="navigation" className={styles.navbar}>
       <div className={styles.logo}>
         <Link href="/">
-          <Image src="/logo.svg" alt="logo" width={50} height={50} />
+          <LogoIcon width={50} height={50} />
         </Link>
+        <form className={styles.search}>
+          <input type="search" placeholder="Search tutorials " />
+          <button aria-label="search" type="submit">
+            <SearchIcon color="var(--tertiary)" />
+          </button>
+        </form>
       </div>
 
-      <div className={styles.search}>
+      <form className={`${styles.search} ${styles.only_mobile}`}>
         <input type="search" placeholder="Search tutorials " />
         <button aria-label="search" type="submit">
-          <i className="fas fa-search" aria-hidden="true"></i>
+          <SearchIcon />
         </button>
-      </div>
+      </form>
       <input type="checkbox" id="checkbox_toggle" className={styles.toggle} />
       <label htmlFor="checkbox_toggle" className={styles.hamburger}>
         &#9776;
@@ -27,7 +34,7 @@ const Navbar = () => {
         </li>
         <li>
           <Link href="/about" scroll={false}>
-            About Us
+            About
           </Link>
         </li>
         <li>

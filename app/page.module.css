@@ -135,4 +135,13 @@
   .headline h3 {
     width: 100%;
   }
+
+  .btn__group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .btn__group a {
+    margin: 0;
+  }
 }
