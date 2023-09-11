@@ -1,8 +1,8 @@
 import { MetadataRoute } from "next";
+import { AppConfig } from "@/config";
 import { CMSPageMeta, allBlogsMeta } from "@/lib";
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_BASE_URL || "https://next-pro-weblog.vercel.app";
+const BASE_URL = AppConfig.NEXT_PUBLIC_BASE_URL;
 
 // Read https://www.sitemaps.org/protocol.html
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -12,7 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogSiteMaps: MetadataRoute.Sitemap = blogs.items.map((item) => {
     const meta = item.meta as CMSPageMeta;
     return {
-      url: BASE_URL + "/blog/" + meta.slug,
+      url: BASE_URL + new URL(meta.html_url).pathname,
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.5,

@@ -1,7 +1,7 @@
+import { AppConfig } from "@/config";
 import { MetadataRoute } from "next";
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_BASE_URL || "https://next-pro-weblog.vercel.app";
+const BASE_URL = AppConfig.NEXT_PUBLIC_BASE_URL;
 
 export default function robots(): MetadataRoute.Robots {
   return {

@@ -1,3 +1,4 @@
+import { AppConfig } from "@/config";
 import { WeblogContents, WeblogPage } from "@/types";
 import {
   CMSClient,
@@ -7,8 +8,8 @@ import {
   CMSMediaMeta,
 } from "wagtail-js";
 
-const CMS_API_KEY = process.env.CMS_API_KEY || "";
-const CMS_API_URL = process.env.CMS_API_URL || "";
+const CMS_API_KEY = AppConfig.CMS_API_KEY;
+const CMS_API_URL = AppConfig.CMS_API_URL;
 
 export const cmsClient = new CMSClient({
   baseURL: CMS_API_URL,
