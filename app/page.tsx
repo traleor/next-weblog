@@ -15,8 +15,8 @@ export default async function Page() {
   const blogsData = getBlogs(3);
   // Wait for the promises to resolve
   const [{ blogs }] = await Promise.all([blogsData]);
-  console.group("BLOG");
-  console.log("Props");
+  console.group("HOME PAGE");
+  console.log("BLOGS: ", blogs);
   console.groupEnd();
   return (
     <div className={styles.container}>

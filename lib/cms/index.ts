@@ -6,6 +6,7 @@ import {
   CMSPageMeta,
   CMSContent,
   CMSMediaMeta,
+  CMSQueries,
 } from "wagtail-js";
 
 const CMS_API_KEY = AppConfig.CMS_API_KEY;
@@ -18,6 +19,14 @@ export const cmsClient = new CMSClient({
     "Traleor-Api-Key": CMS_API_KEY,
   },
 });
+
+// NOTE: Structure your pages and urls in the CMS to match the structure of your app
+// This will make it easier to fetch pages and build links/urls
+// Example:
+//   - CMS page: /blog
+//   - CMS page: /blog/{slug}
+//   - CMS page: /tutorials
+//   - CMS page: /tutorials/{slug}
 
 /*
  * allBlogsMeta gets all blogs with metadata from the CMS
@@ -37,22 +46,32 @@ export const allBlogsMeta = async (): Promise<WeblogContents> => {
  */
 export const allBlogs = async (
   limit?: number,
-  cache?: RequestCache
+  cache?: RequestCache,
+  child_of?: number
 ): Promise<WeblogContents> => {
+  const options = {
+    locale: "en",
+    order: "random",
+    type: "weblog.WeblogPage",
+    fields: [
+      "headline",
+      "search_description",
+      "image",
+      "category",
+      "date_published",
+    ],
+  } as CMSQueries;
+
+  if (child_of !== undefined) {
+    options.child_of = child_of;
+  }
+
+  if (limit !== undefined) {
+    options.limit = limit;
+  }
+
   return (await cmsClient.fetchPages(
-    {
-      locale: "en",
-      order: "random",
-      type: "weblog.WeblogPage",
-      fields: [
-        "headline",
-        "search_description",
-        "image",
-        "category",
-        "date_published",
-      ],
-      limit: limit,
-    },
+    options,
     undefined,
     cache
   )) as WeblogContents;
