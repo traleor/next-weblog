@@ -1,3 +1,4 @@
+import { WeblogContents, WeblogPage } from "@/types";
 import {
   CMSClient,
   CMSContents,
@@ -21,20 +22,20 @@ export const cmsClient = new CMSClient({
  * allBlogsMeta gets all blogs with metadata from the CMS
  * returns a promise of CMSContents
  */
-export const allBlogsMeta = async () => {
-  return await cmsClient.fetchPages({
+export const allBlogsMeta = async (): Promise<WeblogContents> => {
+  return (await cmsClient.fetchPages({
     locale: "en",
     order: "random",
     type: "weblog.WeblogPage",
-  });
+  })) as WeblogContents;
 };
 
 /*
  * allBlogs gets all blogs from the CMS with basic info for display
  * returns a promise of CMSContents
  */
-export const allBlogs = async (limit: number) => {
-  return await cmsClient.fetchPages({
+export const allBlogs = async (limit: number): Promise<WeblogContents> => {
+  return (await cmsClient.fetchPages({
     locale: "en",
     order: "random",
     type: "weblog.WeblogPage",
@@ -46,15 +47,15 @@ export const allBlogs = async (limit: number) => {
       "date_published",
     ],
     limit: limit,
-  });
+  })) as WeblogContents;
 };
 
 /*
  * getBlog gets a single blog from the CMS by slug
  * returns a promise of CMSContent
  */
-export const getBlog = async (slug: string) => {
-  return await cmsClient.fetchPage(slug, { fields: ["*"] });
+export const getBlog = async (slug: string): Promise<WeblogPage> => {
+  return (await cmsClient.fetchPage(slug, { fields: ["*"] })) as WeblogPage;
 };
 
 export type { CMSContents, CMSPageMeta, CMSContent, CMSMediaMeta };

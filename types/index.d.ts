@@ -44,3 +44,10 @@ export interface WeblogPage {
   tags: string[];
   date_published: string;
 }
+
+export interface WeblogContents {
+  meta: {
+    total_count: number;
+  };
+  items: WeblogPage[];
+}
