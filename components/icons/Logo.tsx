@@ -58,10 +58,10 @@ const Icon = ({ ...props }) => {
           y2="100.154"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#2E6796" />
-          <stop offset="0.219" stop-color="#3A6EA2" />
-          <stop offset="0.689" stop-color="#507BB8" />
-          <stop offset="0.994" stop-color="#5880C0" />
+          <stop stopColor="#2E6796" />
+          <stop offset="0.219" stopColor="#3A6EA2" />
+          <stop offset="0.689" stopColor="#507BB8" />
+          <stop offset="0.994" stopColor="#5880C0" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_1849_765"
@@ -71,14 +71,14 @@ const Icon = ({ ...props }) => {
           y2="97.7178"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" stop-opacity="0" />
-          <stop offset="0.143" stop-color="white" stop-opacity="0.216" />
-          <stop offset="0.314" stop-color="white" stop-opacity="0.451" />
-          <stop offset="0.48" stop-color="white" stop-opacity="0.647" />
-          <stop offset="0.635" stop-color="white" stop-opacity="0.8" />
-          <stop offset="0.777" stop-color="white" stop-opacity="0.91" />
-          <stop offset="0.901" stop-color="white" stop-opacity="0.976" />
-          <stop offset="0.994" stop-color="white" />
+          <stop stopColor="white" stopOpacity="0" />
+          <stop offset="0.143" stopColor="white" stopOpacity="0.216" />
+          <stop offset="0.314" stopColor="white" stopOpacity="0.451" />
+          <stop offset="0.48" stopColor="white" stopOpacity="0.647" />
+          <stop offset="0.635" stopColor="white" stopOpacity="0.8" />
+          <stop offset="0.777" stopColor="white" stopOpacity="0.91" />
+          <stop offset="0.901" stopColor="white" stopOpacity="0.976" />
+          <stop offset="0.994" stopColor="white" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_1849_765"
@@ -88,12 +88,12 @@ const Icon = ({ ...props }) => {
           y2="15.2122"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#667E93" />
-          <stop offset="0.123" stop-color="#71919C" />
-          <stop offset="0.344" stop-color="#82ADAA" />
-          <stop offset="0.565" stop-color="#8FC2B4" />
-          <stop offset="0.783" stop-color="#96CEBA" />
-          <stop offset="0.994" stop-color="#99D3BC" />
+          <stop stopColor="#667E93" />
+          <stop offset="0.123" stopColor="#71919C" />
+          <stop offset="0.344" stopColor="#82ADAA" />
+          <stop offset="0.565" stopColor="#8FC2B4" />
+          <stop offset="0.783" stopColor="#96CEBA" />
+          <stop offset="0.994" stopColor="#99D3BC" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_1849_765"
@@ -103,17 +103,17 @@ const Icon = ({ ...props }) => {
           y2="-42.703"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" stop-opacity="0" />
-          <stop offset="0.036" stop-color="white" stop-opacity="0.118" />
-          <stop offset="0.098" stop-color="white" stop-opacity="0.302" />
-          <stop offset="0.166" stop-color="white" stop-opacity="0.467" />
-          <stop offset="0.239" stop-color="white" stop-opacity="0.612" />
-          <stop offset="0.316" stop-color="white" stop-opacity="0.733" />
-          <stop offset="0.4" stop-color="white" stop-opacity="0.831" />
-          <stop offset="0.494" stop-color="white" stop-opacity="0.906" />
-          <stop offset="0.603" stop-color="white" stop-opacity="0.961" />
-          <stop offset="0.739" stop-color="white" stop-opacity="0.992" />
-          <stop offset="0.994" stop-color="white" />
+          <stop stopColor="white" stopOpacity="0" />
+          <stop offset="0.036" stopColor="white" stopOpacity="0.118" />
+          <stop offset="0.098" stopColor="white" stopOpacity="0.302" />
+          <stop offset="0.166" stopColor="white" stopOpacity="0.467" />
+          <stop offset="0.239" stopColor="white" stopOpacity="0.612" />
+          <stop offset="0.316" stopColor="white" stopOpacity="0.733" />
+          <stop offset="0.4" stopColor="white" stopOpacity="0.831" />
+          <stop offset="0.494" stopColor="white" stopOpacity="0.906" />
+          <stop offset="0.603" stopColor="white" stopOpacity="0.961" />
+          <stop offset="0.739" stopColor="white" stopOpacity="0.992" />
+          <stop offset="0.994" stopColor="white" />
         </linearGradient>
         <linearGradient
           id="paint4_linear_1849_765"
@@ -123,9 +123,9 @@ const Icon = ({ ...props }) => {
           y2="96.8101"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#64C29D" />
-          <stop offset="0.534" stop-color="#458F96" />
-          <stop offset="1" stop-color="#2E6792" />
+          <stop stopColor="#64C29D" />
+          <stop offset="0.534" stopColor="#458F96" />
+          <stop offset="1" stopColor="#2E6792" />
         </linearGradient>
         <linearGradient
           id="paint5_linear_1849_765"
@@ -135,17 +135,17 @@ const Icon = ({ ...props }) => {
           y2="84.3313"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="0.197" stop-color="white" stop-opacity="0.988" />
-          <stop offset="0.331" stop-color="white" stop-opacity="0.953" />
-          <stop offset="0.446" stop-color="white" stop-opacity="0.894" />
-          <stop offset="0.551" stop-color="white" stop-opacity="0.808" />
-          <stop offset="0.649" stop-color="white" stop-opacity="0.698" />
-          <stop offset="0.742" stop-color="white" stop-opacity="0.565" />
-          <stop offset="0.83" stop-color="white" stop-opacity="0.404" />
-          <stop offset="0.915" stop-color="white" stop-opacity="0.22" />
-          <stop offset="0.995" stop-color="white" stop-opacity="0.016" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="0.197" stopColor="white" stopOpacity="0.988" />
+          <stop offset="0.331" stopColor="white" stopOpacity="0.953" />
+          <stop offset="0.446" stopColor="white" stopOpacity="0.894" />
+          <stop offset="0.551" stopColor="white" stopOpacity="0.808" />
+          <stop offset="0.649" stopColor="white" stopOpacity="0.698" />
+          <stop offset="0.742" stopColor="white" stopOpacity="0.565" />
+          <stop offset="0.83" stopColor="white" stopOpacity="0.404" />
+          <stop offset="0.915" stopColor="white" stopOpacity="0.22" />
+          <stop offset="0.995" stopColor="white" stopOpacity="0.016" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint6_linear_1849_765"
@@ -155,11 +155,11 @@ const Icon = ({ ...props }) => {
           y2="93.7761"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4C78BB" />
-          <stop offset="0.201" stop-color="#4463AE" />
-          <stop offset="0.459" stop-color="#3E50A2" />
-          <stop offset="0.723" stop-color="#3A449B" />
-          <stop offset="1" stop-color="#394199" />
+          <stop stopColor="#4C78BB" />
+          <stop offset="0.201" stopColor="#4463AE" />
+          <stop offset="0.459" stopColor="#3E50A2" />
+          <stop offset="0.723" stopColor="#3A449B" />
+          <stop offset="1" stopColor="#394199" />
         </linearGradient>
         <linearGradient
           id="paint7_linear_1849_765"
@@ -169,14 +169,14 @@ const Icon = ({ ...props }) => {
           y2="93.7761"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="0.141" stop-color="white" stop-opacity="0.784" />
-          <stop offset="0.315" stop-color="white" stop-opacity="0.549" />
-          <stop offset="0.482" stop-color="white" stop-opacity="0.353" />
-          <stop offset="0.639" stop-color="white" stop-opacity="0.2" />
-          <stop offset="0.782" stop-color="white" stop-opacity="0.09" />
-          <stop offset="0.907" stop-color="white" stop-opacity="0.024" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="0.141" stopColor="white" stopOpacity="0.784" />
+          <stop offset="0.315" stopColor="white" stopOpacity="0.549" />
+          <stop offset="0.482" stopColor="white" stopOpacity="0.353" />
+          <stop offset="0.639" stopColor="white" stopOpacity="0.2" />
+          <stop offset="0.782" stopColor="white" stopOpacity="0.09" />
+          <stop offset="0.907" stopColor="white" stopOpacity="0.024" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint8_linear_1849_765"
@@ -186,8 +186,8 @@ const Icon = ({ ...props }) => {
           y2="28.3037"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F6E06F" />
-          <stop offset="1" stop-color="#EB4095" />
+          <stop stopColor="#F6E06F" />
+          <stop offset="1" stopColor="#EB4095" />
         </linearGradient>
       </defs>
     </svg>

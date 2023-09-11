@@ -5,6 +5,9 @@ import { montserrat, libre, source_code } from "@/lib";
 import { Footer, Navbar } from "@/components";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_BASE_URL || "https://next-pro-weblog.vercel.app"
+  ),
   title: "World-Class Tutorials for Elevating Your Software Engineering Skills",
   description:
     " Discover the art of building modern, high-performance web applications with our expert tutorials. Stay ahead in the tech world with fresh content every two weeks!",

@@ -34,28 +34,43 @@ export const allBlogsMeta = async (): Promise<WeblogContents> => {
  * allBlogs gets all blogs from the CMS with basic info for display
  * returns a promise of CMSContents
  */
-export const allBlogs = async (limit: number): Promise<WeblogContents> => {
-  return (await cmsClient.fetchPages({
-    locale: "en",
-    order: "random",
-    type: "weblog.WeblogPage",
-    fields: [
-      "headline",
-      "search_description",
-      "image",
-      "category",
-      "date_published",
-    ],
-    limit: limit,
-  })) as WeblogContents;
+export const allBlogs = async (
+  limit?: number,
+  cache?: RequestCache
+): Promise<WeblogContents> => {
+  return (await cmsClient.fetchPages(
+    {
+      locale: "en",
+      order: "random",
+      type: "weblog.WeblogPage",
+      fields: [
+        "headline",
+        "search_description",
+        "image",
+        "category",
+        "date_published",
+      ],
+      limit: limit,
+    },
+    undefined,
+    cache
+  )) as WeblogContents;
 };
 
 /*
  * getBlog gets a single blog from the CMS by slug
  * returns a promise of CMSContent
  */
-export const getBlog = async (slug: string): Promise<WeblogPage> => {
-  return (await cmsClient.fetchPage(slug, { fields: ["*"] })) as WeblogPage;
+export const getBlog = async (
+  slug: string,
+  cache?: RequestCache
+): Promise<WeblogPage> => {
+  return (await cmsClient.fetchPage(
+    slug,
+    { fields: ["*"] },
+    undefined,
+    cache
+  )) as WeblogPage;
 };
 
 export type { CMSContents, CMSPageMeta, CMSContent, CMSMediaMeta };

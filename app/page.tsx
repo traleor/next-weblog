@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./page.module.css";
 import { Card, Grid } from "@/components";
-import { allBlogs } from "@/lib";
+import { allBlogs, cmsClient } from "@/lib";
 
 async function getBlogs(limit: number) {
   const blogs = await allBlogs(limit);
@@ -91,7 +91,10 @@ export default async function Page() {
               {blogs?.map((blog) => (
                 <Card
                   key={blog.id}
-                  imgSource={"/images/cover.png"}
+                  imgSource={
+                    cmsClient.getMediaSrc(blog.image.meta) ||
+                    "/images/cover.png"
+                  }
                   title={blog.headline}
                   category={blog.category.name}
                   text={blog.meta.search_description || ""}
