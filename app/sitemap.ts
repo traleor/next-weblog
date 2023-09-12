@@ -1,14 +1,26 @@
 import { MetadataRoute } from "next";
 import { AppConfig } from "@/config";
-import { CMSPageMeta, allBlogsMeta } from "@/lib";
+import { CMSPageMeta, allPageMeta } from "@/lib";
 
 const BASE_URL = AppConfig.NEXT_PUBLIC_BASE_URL;
 
 // Read https://www.sitemaps.org/protocol.html
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const blogs = await allBlogsMeta();
+  const blogIndices = await allPageMeta("weblog.WeblogIndex");
+  const blogs = await allPageMeta("weblog.WeblogPage");
   // console.log("BLOGS", JSON.stringify(blogs, null, 4));
 
+  const blogIndicesSiteMaps: MetadataRoute.Sitemap = blogIndices.items.map(
+    (item) => {
+      const meta = item.meta as CMSPageMeta;
+      return {
+        url: BASE_URL + new URL(meta.html_url).pathname,
+        lastModified: new Date(),
+        changeFrequency: "weekly",
+        priority: 0.5,
+      };
+    }
+  );
   const blogSiteMaps: MetadataRoute.Sitemap = blogs.items.map((item) => {
     const meta = item.meta as CMSPageMeta;
     return {
@@ -32,12 +44,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.8,
     },
-    {
-      url: BASE_URL + "/blog",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.5,
-    },
+    ...blogIndicesSiteMaps,
     ...blogSiteMaps,
   ];
 }

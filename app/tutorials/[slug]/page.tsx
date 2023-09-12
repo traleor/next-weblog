@@ -44,7 +44,7 @@ export default async function Page({ params: { slug } }: Props) {
         />
       </div>
       <div className={styles.breadcrumbs}>
-        <Link href={"/blog"}>Blogs</Link>{" "}
+        <Link href={"/tutorials"}>Tutorials</Link>{" "}
         <svg
           width="21"
           height="21"
@@ -190,7 +190,7 @@ model.save("model.h5")`}
               "Music Festival in Douala. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc"
             }
             status="Active"
-            path={`/blog/${1}`}
+            path={`/tutorials/${1}`}
           />
           <Card
             key={1}
@@ -201,7 +201,7 @@ model.save("model.h5")`}
               "Music Festival in Douala. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc"
             }
             status="Active"
-            path={`/blog/${1}`}
+            path={`/tutorials/${1}`}
           />
           <Card
             key={1}
@@ -212,7 +212,7 @@ model.save("model.h5")`}
               "Music Festival in Douala. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc"
             }
             status="Active"
-            path={`/blog/${1}`}
+            path={`/tutorials/${1}`}
           />
         </Grid>
       </div>

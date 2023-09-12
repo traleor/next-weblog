@@ -30,7 +30,7 @@ const Navbar = () => {
       </label>
       <ul className={`${styles.menu}`}>
         <li>
-          <Link href="/blog">Tutorials</Link>
+          <Link href="/tutorials">Tutorials</Link>
         </li>
         <li>
           <Link href="/about" scroll={false}>

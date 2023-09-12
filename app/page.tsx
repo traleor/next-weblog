@@ -2,21 +2,25 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./page.module.css";
 import { Card, Grid } from "@/components";
-import { allBlogs, cmsClient } from "@/lib";
+import { allBlogs, cmsClient, cutText } from "@/lib";
+import { AppConfig } from "@/config";
+
+// no-cache as RequestCache is sufficient, an alternative is to use revalidate
+// export const revalidate = 1;
 
 async function getBlogs(limit: number) {
   const blogs = await allBlogs(limit);
   return {
-    blogs: blogs.items || null,
+    tutorials: blogs.items || null,
   };
 }
 
 export default async function Page() {
   const blogsData = getBlogs(3);
   // Wait for the promises to resolve
-  const [{ blogs }] = await Promise.all([blogsData]);
+  const [{ tutorials }] = await Promise.all([blogsData]);
   console.group("HOME PAGE");
-  console.log("BLOGS: ", blogs);
+  console.log("Tutorials: ", tutorials);
   console.groupEnd();
   return (
     <div className={styles.container}>
@@ -37,7 +41,7 @@ export default async function Page() {
                 Watch Tutorial
               </button>
             </Link>
-            <Link href="/blog" passHref>
+            <Link href="/tutorials" passHref>
               <button aria-label="Explore More" className="secondary">
                 Explore More
               </button>
@@ -88,7 +92,7 @@ export default async function Page() {
         <div className={styles.wrapper}>
           <Grid num={3}>
             <>
-              {blogs?.map((blog) => (
+              {tutorials?.map((blog) => (
                 <Card
                   key={blog.id}
                   imgSource={
@@ -97,16 +101,16 @@ export default async function Page() {
                   }
                   title={blog.headline}
                   category={blog.category.name}
-                  text={blog.meta.search_description || ""}
+                  text={cutText(blog.meta.search_description || "")}
                   status={blog.date_published}
-                  path={`/blog/${blog.meta.slug}`}
+                  path={new URL(blog.meta.html_url).pathname}
                 />
               ))}
             </>
           </Grid>
         </div>
         <div className={styles.headline}>
-          <Link href="/blog" passHref>
+          <Link href="/tutorials" passHref>
             <button
               aria-label="show more"
               className="secondary"

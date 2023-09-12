@@ -3,6 +3,9 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { Card, Grid } from "@/components";
 
+// no-cache as RequestCache is sufficient, an alternative is to use revalidate
+// export const revalidate = 0;
+
 export default function Page() {
   return (
     <div className={styles.blog_container}>
@@ -72,7 +75,7 @@ export default function Page() {
                 "Music Festival in Douala. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc"
               }
               status="Active"
-              path={`/blog/${1}`}
+              path={`/tutorials/${1}`}
             />
             <Card
               key={1}
@@ -83,7 +86,7 @@ export default function Page() {
                 "Music Festival in Douala. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc"
               }
               status="Active"
-              path={`/blog/${1}`}
+              path={`/tutorials/${1}`}
             />
             <Card
               key={1}
@@ -94,7 +97,7 @@ export default function Page() {
                 "Music Festival in Douala. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc"
               }
               status="Active"
-              path={`/blog/${1}`}
+              path={`/tutorials/${1}`}
             />
             <Card
               key={1}
@@ -105,7 +108,7 @@ export default function Page() {
                 "Music Festival in Douala. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc"
               }
               status="Active"
-              path={`/blog/${1}`}
+              path={`/tutorials/${1}`}
             />
           </Grid>
         </div>

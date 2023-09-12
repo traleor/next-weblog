@@ -28,15 +28,17 @@ export const cmsClient = new CMSClient({
 //   - CMS page: /tutorials
 //   - CMS page: /tutorials/{slug}
 
+type PageType = "cms.HomePage" | "weblog.WeblogIndex" | "weblog.WeblogPage";
+
 /*
  * allBlogsMeta gets all blogs with metadata from the CMS
  * returns a promise of CMSContents
  */
-export const allBlogsMeta = async (): Promise<WeblogContents> => {
+export const allPageMeta = async (type: PageType): Promise<WeblogContents> => {
   return (await cmsClient.fetchPages({
     locale: "en",
     order: "random",
-    type: "weblog.WeblogPage",
+    type: type,
   })) as WeblogContents;
 };
 

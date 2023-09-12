@@ -42,3 +42,13 @@ export function getStartOfYear(date: Date): Date {
   startOfYear.setHours(0, 0, 0, 0);
   return startOfYear;
 }
+
+// Utility function that takes text and cuts it (default length is 170 characters)
+export function cutText(text: string, maxLength = 170) {
+  if (text.length <= maxLength) {
+    return text;
+  } else {
+    // Cut the text to the specified maxLength and add ellipsis (...) at the end
+    return text.slice(0, maxLength - 3) + "...";
+  }
+}
