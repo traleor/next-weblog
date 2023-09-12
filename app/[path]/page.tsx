@@ -1,14 +1,41 @@
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata, ResolvingMetadata } from "next";
 import styles from "./page.module.css";
 import { Card, Grid } from "@/components";
 
 // no-cache as RequestCache is sufficient, an alternative is to use revalidate
 // export const revalidate = 0;
 
-export default function Page() {
+type Props = {
+  params: { lang: string; path: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata(
+  { params: { path } }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+  const parentMetadata = await parent;
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = parentMetadata?.openGraph?.images || [];
+
+  return {
+    title: `Page ${path}`,
+    openGraph: {
+      images: [...previousImages],
+    },
+  };
+}
+
+export default async function Page({
+  params: { lang, path },
+  searchParams,
+}: Props) {
+  const id = searchParams?.id?.toString();
   return (
-    <div className={styles.blog_container}>
+    <div className={styles.page_container}>
       <div className={styles.sort}>
         <div>
           <h2>Discover the Best Tutorials on Earth</h2>

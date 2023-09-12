@@ -12,6 +12,9 @@ import {
 const CMS_API_KEY = AppConfig.CMS_API_KEY;
 const CMS_API_URL = AppConfig.CMS_API_URL;
 
+type Languages = "en" | "fr";
+type PageType = "cms.HomePage" | "weblog.WeblogIndex" | "weblog.WeblogPage";
+
 export const cmsClient = new CMSClient({
   baseURL: CMS_API_URL,
   apiPath: "/api/cms/v2",
@@ -28,15 +31,16 @@ export const cmsClient = new CMSClient({
 //   - CMS page: /tutorials
 //   - CMS page: /tutorials/{slug}
 
-type PageType = "cms.HomePage" | "weblog.WeblogIndex" | "weblog.WeblogPage";
-
 /*
  * allBlogsMeta gets all blogs with metadata from the CMS
  * returns a promise of CMSContents
  */
-export const allPageMeta = async (type: PageType): Promise<WeblogContents> => {
+export const allPageMeta = async (
+  type: PageType,
+  lang?: Languages
+): Promise<WeblogContents> => {
   return (await cmsClient.fetchPages({
-    locale: "en",
+    locale: lang || "en",
     order: "random",
     type: type,
   })) as WeblogContents;
@@ -49,10 +53,11 @@ export const allPageMeta = async (type: PageType): Promise<WeblogContents> => {
 export const allBlogs = async (
   limit?: number,
   cache?: RequestCache,
-  child_of?: number
+  child_of?: number,
+  lang?: Languages
 ): Promise<WeblogContents> => {
   const options = {
-    locale: "en",
+    locale: lang || "en",
     order: "random",
     type: "weblog.WeblogPage",
     fields: [

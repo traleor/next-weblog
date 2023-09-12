@@ -1,4 +1,4 @@
-.blog_container {
+.page_container {
   width: 100%;
   padding: 1rem 0 10rem 0;
 }
@@ -72,7 +72,7 @@
 }
 
 @media screen and (max-width: 750px) {
-  .blog_container .sort {
+  .page_container .sort {
     flex-direction: column;
   }
   .sort h2,
