@@ -4,7 +4,6 @@ import type { Metadata, ResolvingMetadata } from "next";
 import styles from "./page.module.css";
 import { Card, Grid } from "@/components";
 import { allBlogs, cmsClient, getBlog, getPageMeta } from "@/lib";
-
 // no-cache as RequestCache is sufficient, an alternative is to use revalidate
 // export const revalidate = 0;
 

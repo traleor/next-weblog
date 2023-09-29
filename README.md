@@ -16,7 +16,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load your fonts.
 
 ## Learn More
 
@@ -30,6 +30,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 ## Quick Links
 
 - [Metadata Files](https://nextjs.org/docs/app/api-reference/file-conventions/metadata)
+- [Next Js Data Fetching Patterns](https://nextjs.org/docs/app/building-your-application/data-fetching/patterns)
 
 ## Deploy on Vercel
 

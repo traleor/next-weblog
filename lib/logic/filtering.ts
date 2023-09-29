@@ -8,10 +8,10 @@ import {
 import { WeblogPage } from "@/types";
 
 // Function to filter blog posts by date range
-export const filterByDate = async (
+export const filterByDate = (
   blogPosts: WeblogPage[],
   range: "this-week" | "this-month" | "this-year" | string
-): Promise<WeblogPage[]> => {
+): WeblogPage[] => {
   const currentDate = new Date();
   let startDate: Date;
   let endDate: Date;
@@ -52,10 +52,10 @@ export const filterByDate = async (
 };
 
 // Function to filter blog posts by one or more category slugs
-export const filterByCategories = async (
+export const filterByCategories = (
   blogPosts: WeblogPage[],
   categorySlugs: string[]
-): Promise<WeblogPage[]> => {
+): WeblogPage[] => {
   return blogPosts.filter((post) => {
     return categorySlugs.includes(post.category.slug);
   });

@@ -1,3 +1,4 @@
+import "server-only";
 import { AppConfig } from "@/config";
 import { Page, PageContents, WeblogContents, WeblogPage } from "@/types";
 import {
