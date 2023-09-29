@@ -1,5 +1,5 @@
 import { AppConfig } from "@/config";
-import { WeblogContents, WeblogPage } from "@/types";
+import { Page, PageContents, WeblogContents, WeblogPage } from "@/types";
 import {
   CMSClient,
   CMSContents,
@@ -36,14 +36,35 @@ export const cmsClient = new CMSClient({
  * returns a promise of CMSContents
  */
 export const allPageMeta = async (
-  type: PageType,
+  type?: PageType,
   lang?: Languages
-): Promise<WeblogContents> => {
-  return (await cmsClient.fetchPages({
+): Promise<PageContents> => {
+  const options = {
     locale: lang || "en",
     order: "random",
-    type: type,
-  })) as WeblogContents;
+  } as CMSQueries;
+
+  if (type !== undefined) {
+    options.type = type;
+  }
+
+  return (await cmsClient.fetchPages(options)) as PageContents;
+};
+
+/*
+ * getPageMeta
+ */
+export const getPageMeta = async (
+  slug: string,
+  type?: PageType,
+  lang?: Languages,
+  cache?: RequestCache
+): Promise<Page> => {
+  const options = { locale: lang || "en" } as CMSQueries;
+  if (type !== undefined) {
+    options.type = type;
+  }
+  return (await cmsClient.fetchPage(slug, options, undefined, cache)) as Page;
 };
 
 /*

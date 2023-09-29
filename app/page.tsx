@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./page.module.css";
 import { Card, Grid } from "@/components";
-import { allBlogs, cmsClient, cutText } from "@/lib";
+import { allBlogs, cmsClient } from "@/lib";
 import { AppConfig } from "@/config";
 
 // no-cache as RequestCache is sufficient, an alternative is to use revalidate
@@ -101,7 +101,7 @@ export default async function Page() {
                   }
                   title={blog.headline}
                   category={blog.category.name}
-                  text={cutText(blog.meta.search_description || "")}
+                  text={blog.meta.search_description || ""}
                   status={blog.date_published}
                   path={new URL(blog.meta.html_url).pathname}
                 />

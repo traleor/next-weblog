@@ -31,6 +31,13 @@ export interface WeblogAuthor {
   social_links: WeblogSocialLink[];
 }
 
+export interface Page {
+  id: number;
+  title: string;
+  meta: CMSPageMeta;
+  body: any
+}
+
 export interface WeblogPage {
   id: number;
   title: string;
@@ -43,6 +50,13 @@ export interface WeblogPage {
   //   body: WeblogContent[];
   tags: string[];
   date_published: string;
+}
+
+export interface PageContents {
+  meta: {
+    total_count: number;
+  };
+  items: Page[];
 }
 
 export interface WeblogContents {

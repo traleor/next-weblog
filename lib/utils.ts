@@ -44,7 +44,7 @@ export function getStartOfYear(date: Date): Date {
 }
 
 // Utility function that takes text and cuts it (default length is 170 characters)
-export function cutText(text: string, maxLength = 170) {
+export function truncateText(text: string, maxLength = 170) {
   if (text.length <= maxLength) {
     return text;
   } else {
