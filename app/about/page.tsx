@@ -8,11 +8,11 @@ export default function Page() {
     <div className={styles.container}>
       <section id="about-us" className={styles.general}>
         <div className={styles.headline}>
-          <h2>About Us</h2>
-          <h3>
+          <h1>About Us</h1>
+          <h2>
             Crafting Success Stories Through Code: Your Path to Software
             Excellence Begins with Us
-          </h3>
+          </h2>
         </div>
         <div className={styles.wrapper}>
           <Grid style={{ gap: "3rem" }}>

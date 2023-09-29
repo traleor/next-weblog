@@ -22,9 +22,32 @@ export async function generateMetadata(
   // optionally access and extend (rather than replace) parent metadata
   const previousImages = parentMetadata?.openGraph?.images || [];
 
+  const page = await getPageMeta(path);
+  // console.log("PAGE META", JSON.stringify(page, null, 4));
+
   return {
-    title: `Page ${path}`,
+    title: page.meta.seo_title || page.title,
+    description: page.meta.search_description || "",
+    alternates: {
+      canonical: `/${path}`,
+    },
+    authors: [{ name: "Academy Omen" }],
+    creator: "Academy Omen",
+    publisher: "Academy Omen",
     openGraph: {
+      type: "website",
+      title: page.meta.seo_title || page.title,
+      siteName: "Academy Omen",
+      url: `/${path}`,
+      description: page.meta.search_description || "",
+      images: [...previousImages],
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: "@academyomen",
+      creator: "@academyomen",
+      title: page.meta.seo_title || page.title,
+      description: page.meta.search_description || "",
       images: [...previousImages],
     },
   };

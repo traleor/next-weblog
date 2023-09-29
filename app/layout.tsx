@@ -9,7 +9,25 @@ export const metadata: Metadata = {
   metadataBase: new URL(AppConfig.NEXT_PUBLIC_BASE_URL),
   title: "World-Class Tutorials for Elevating Your Software Engineering Skills",
   description:
-    " Discover the art of building modern, high-performance web applications with our expert tutorials. Stay ahead in the tech world with fresh content every two weeks!",
+    "Discover the art of building modern, high-performance web applications with our expert tutorials. Stay ahead in the tech world with fresh content every two weeks!",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title:
+      "World-Class Tutorials for Elevating Your Software Engineering Skills",
+    description:
+      "Discover the art of building modern, high-performance web applications with our expert tutorials. Stay ahead in the tech world with fresh content every two weeks!",
+    url: "/",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "World-Class Tutorials for Elevating Your Software Engineering Skills",
+    description:
+      "Discover the art of building modern, high-performance web applications with our expert tutorials. Stay ahead in the tech world with fresh content every two weeks!",
+  },
 };
 
 export default function RootLayout({

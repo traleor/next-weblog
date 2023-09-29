@@ -60,7 +60,10 @@ export const getPageMeta = async (
   lang?: Languages,
   cache?: RequestCache
 ): Promise<Page> => {
-  const options = { locale: lang || "en" } as CMSQueries;
+  const options = {
+    locale: lang || "en",
+    fields: ["seo_title", "search_description"],
+  } as CMSQueries;
   if (type !== undefined) {
     options.type = type;
   }
