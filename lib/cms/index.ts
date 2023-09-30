@@ -80,9 +80,9 @@ export const allBlogs = async (
   cache?: RequestCache
 ): Promise<WeblogContents> => {
   const options = {
-    locale: queries?.locale || "en",
-    order: queries?.order || "random",
-    type: queries?.type || "weblog.WeblogPage",
+    locale: "en",
+    order: "random",
+    type: "weblog.WeblogPage",
     fields: [
       "headline",
       "search_description",
