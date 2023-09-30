@@ -76,15 +76,13 @@ export const getPageMeta = async (
  * returns a promise of CMSContents
  */
 export const allBlogs = async (
-  limit?: number,
-  cache?: RequestCache,
-  child_of?: number,
-  lang?: Languages
+  queries?: CMSQueries,
+  cache?: RequestCache
 ): Promise<WeblogContents> => {
   const options = {
-    locale: lang || "en",
-    order: "random",
-    type: "weblog.WeblogPage",
+    locale: queries?.locale || "en",
+    order: queries?.order || "random",
+    type: queries?.type || "weblog.WeblogPage",
     fields: [
       "headline",
       "search_description",
@@ -92,15 +90,8 @@ export const allBlogs = async (
       "category",
       "date_published",
     ],
+    ...queries,
   } as CMSQueries;
-
-  if (child_of !== undefined) {
-    options.child_of = child_of;
-  }
-
-  if (limit !== undefined) {
-    options.limit = limit;
-  }
 
   return (await cmsClient.fetchPages(
     options,

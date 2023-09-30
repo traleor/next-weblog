@@ -1,9 +1,9 @@
-import Link from "next/link";
-import Image from "next/image";
 import type { Metadata, ResolvingMetadata } from "next";
 import styles from "./page.module.css";
 import { Card, Grid } from "@/components";
 import { allBlogs, cmsClient, getBlog, getPageMeta } from "@/lib";
+import { Filtering, Ordering } from "./blocks";
+
 // no-cache as RequestCache is sufficient, an alternative is to use revalidate
 // export const revalidate = 0;
 
@@ -54,8 +54,8 @@ export async function generateMetadata(
 
 async function getContent(slug: string) {
   const page = await getPageMeta(slug);
-  // No cache to always get the updated content
-  const weblog = await allBlogs(10, undefined, page.id);
+  // TODO: Add No cache to always get the updated content
+  const weblog = await allBlogs({ limit: 10, child_of: page.id });
   return {
     page: page || null,
     weblogs: weblog.items || null,
@@ -66,12 +66,14 @@ export default async function Page({
   params: { lang, path },
   searchParams,
 }: Props) {
-  const id = searchParams?.id?.toString();
+  // Destructure the parameters you need
+  const { category, order, date } = searchParams || {};
+
   const pageData = getContent(path);
   const [{ page, weblogs }] = await Promise.all([pageData]);
   console.group("Page");
   console.log("Params", lang, path);
-  console.log("searchParams", searchParams, id);
+  console.log("searchParams", searchParams);
   console.groupEnd();
 
   // If page is WebBlogIndex, then render below
@@ -87,14 +89,7 @@ export default async function Page({
               world.
             </h3>
           </div>
-          <div>
-            <select name="filter" id="filter">
-              <option value="">Sort By</option>
-              <option value="date">Date</option>
-              <option value="tag">Category</option>
-              <option value="tag">Tags</option>
-            </select>
-          </div>
+          <Ordering />
         </div>
         <div className={styles.container}>
           <div className={styles.options}>
@@ -104,32 +99,31 @@ export default async function Page({
             <hr />
 
             <div className={styles.head}>
-              <h3>Category</h3>
-              <div>
-                <input type="checkbox" />
-                <label htmlFor="Art">Art</label>
-              </div>
-              <div>
-                <input type="checkbox" />
-                <label htmlFor="Sport">Sport</label>
-              </div>
-              <div>
-                <input type="checkbox" />
-                <label htmlFor="Photography">Music</label>
-              </div>
+              <Filtering
+                param="category"
+                title="Category"
+                items={weblogs
+                  .map((blog) => ({
+                    name: blog.category.name,
+                    value: blog.category.slug,
+                  }))
+                  .filter(
+                    (item, index, self) =>
+                      index === self.findIndex((t) => t.value === item.value)
+                  )}
+              />
             </div>
             <hr />
 
             <div className={styles.head}>
-              <h3>Date</h3>
-              <div>
-                <input type="checkbox" />
-                <label htmlFor="This Week">This Week</label>
-              </div>
-              <div>
-                <input type="checkbox" />
-                <label htmlFor="This Week">Last Month</label>
-              </div>
+              <Filtering
+                param="date"
+                title="Date"
+                items={[
+                  { name: "This Week", value: "this-week" },
+                  { name: "This Month", value: "this-month" },
+                ]}
+              />
             </div>
             <hr />
           </div>

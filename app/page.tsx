@@ -9,7 +9,7 @@ import { AppConfig } from "@/config";
 // export const revalidate = 1;
 
 async function getBlogs(limit: number) {
-  const blogs = await allBlogs(limit);
+  const blogs = await allBlogs({ limit });
   return {
     tutorials: blogs.items || null,
   };

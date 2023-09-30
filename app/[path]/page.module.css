@@ -52,12 +52,7 @@
   font-size: var(--font-size-5);
 }
 
-.container .options .head input {
-  appearance: auto;
-  margin-right: 0.5rem;
-}
-
-.options label {
+.container .options .head a {
   color: var(--tertiary);
 }
 

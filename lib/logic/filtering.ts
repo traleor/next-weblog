@@ -10,7 +10,7 @@ import { WeblogPage } from "@/types";
 // Function to filter blog posts by date range
 export const filterByDate = (
   blogPosts: WeblogPage[],
-  range: "this-week" | "this-month" | "this-year" | string
+  range: "this-week" | "this-month" | "this-year"
 ): WeblogPage[] => {
   const currentDate = new Date();
   let startDate: Date;
