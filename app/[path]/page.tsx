@@ -1,7 +1,14 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import styles from "./page.module.css";
 import { Card, Grid } from "@/components";
-import { allBlogs, cmsClient, getBlog, getPageMeta } from "@/lib";
+import {
+  allBlogs,
+  cmsClient,
+  filterByDate,
+  getPageMeta,
+  truncateText,
+  filterByCategories,
+} from "@/lib";
 import { Filtering, Ordering } from "./blocks";
 
 // no-cache as RequestCache is sufficient, an alternative is to use revalidate
@@ -52,13 +59,48 @@ export async function generateMetadata(
   };
 }
 
-async function getContent(slug: string) {
+async function getPageContent(
+  slug: string,
+  filters?: {
+    category?: string | string[];
+    order?: string | string[];
+    date?: string | string[];
+  }
+) {
   const page = await getPageMeta(slug);
-  // TODO: Add No cache to always get the updated content
-  const weblog = await allBlogs({ limit: 10, child_of: page.id });
+  // TODO: Add nocache to always get the updated content
+  const weblog = await allBlogs({
+    limit: 10,
+    child_of: page.id,
+    order: String(filters?.order),
+  });
+
+  let filteredWeblogs = weblog.items;
+  // Extract unique categories from the filtered items
+  const uniqueCategorySet = new Set<{ name: string; value: string }>();
+  filteredWeblogs.forEach((blog) => {
+    uniqueCategorySet.add({
+      name: blog.category.name,
+      value: blog.category.slug,
+    });
+  });
+
+  // Apply category filtering if a category is provided
+  if (filters?.category) {
+    const selectedCategories = Array.isArray(filters.category)
+      ? filters.category
+      : [filters.category];
+
+    // Use the filterByCategories function to filter by categories
+    filteredWeblogs = filterByCategories(filteredWeblogs, selectedCategories);
+  }
+
   return {
     page: page || null,
-    weblogs: weblog.items || null,
+    categories: Array.from(uniqueCategorySet) || [],
+    weblogs: filters?.date
+      ? filterByDate(filteredWeblogs, String(filters?.date))
+      : filteredWeblogs,
   };
 }
 
@@ -69,8 +111,8 @@ export default async function Page({
   // Destructure the parameters you need
   const { category, order, date } = searchParams || {};
 
-  const pageData = getContent(path);
-  const [{ page, weblogs }] = await Promise.all([pageData]);
+  const pageData = getPageContent(path, { category, order, date });
+  const [{ page, weblogs, categories }] = await Promise.all([pageData]);
   console.group("Page");
   console.log("Params", lang, path);
   console.log("searchParams", searchParams);
@@ -97,24 +139,10 @@ export default async function Page({
               <h2>Filter By</h2>
             </div>
             <hr />
-
             <div className={styles.head}>
-              <Filtering
-                param="category"
-                title="Category"
-                items={weblogs
-                  .map((blog) => ({
-                    name: blog.category.name,
-                    value: blog.category.slug,
-                  }))
-                  .filter(
-                    (item, index, self) =>
-                      index === self.findIndex((t) => t.value === item.value)
-                  )}
-              />
+              <Filtering param="category" title="Category" items={categories} />
             </div>
             <hr />
-
             <div className={styles.head}>
               <Filtering
                 param="date"
@@ -138,9 +166,9 @@ export default async function Page({
                       cmsClient.getMediaSrc(blog.image.meta) ||
                       "/images/cover.png"
                     }
-                    title={blog.headline}
+                    title={truncateText(blog.headline, 90)}
                     category={blog.category.name}
-                    text={blog.meta.search_description || ""}
+                    text={truncateText(blog.meta.search_description || "", 90)}
                     status={blog.date_published}
                     path={new URL(blog.meta.html_url).pathname}
                   />

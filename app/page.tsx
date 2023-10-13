@@ -2,11 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./page.module.css";
 import { Card, Grid } from "@/components";
-import { allBlogs, cmsClient } from "@/lib";
-import { AppConfig } from "@/config";
+import { allBlogs, cmsClient, truncateText } from "@/lib";
 
 // no-cache as RequestCache is sufficient, an alternative is to use revalidate
-// export const revalidate = 1;
+export const revalidate = 3600; // every hour
 
 async function getBlogs(limit: number) {
   const blogs = await allBlogs({ limit });
@@ -101,7 +100,7 @@ export default async function Page() {
                   }
                   title={blog.headline}
                   category={blog.category.name}
-                  text={blog.meta.search_description || ""}
+                  text={truncateText(blog.meta.search_description || "", 130)}
                   status={blog.date_published}
                   path={new URL(blog.meta.html_url).pathname}
                 />

@@ -3,7 +3,6 @@ import Image from "next/image";
 
 // styles import
 import styles from "./styles.module.css";
-import { truncateText } from "@/lib";
 
 type CardPropsType = {
   width?: number;
@@ -77,7 +76,7 @@ const Card: React.FC<CardPropsType> = ({
               </div>
             )}
             <div className={styles.flex}>
-              <p>{truncateText(text, 130)}</p>
+              <p>{text}</p>
             </div>
           </div>
         </article>
@@ -90,7 +89,7 @@ const Card: React.FC<CardPropsType> = ({
         {action && (
           <button onClick={action} className="primary">
             {icon && icon}
-            {truncateText(text, 130)}
+            {text}
           </button>
         )}
       </>
