@@ -77,12 +77,21 @@ async function getPageContent(
 
   let filteredWeblogs = weblog.items;
   // Extract unique categories from the filtered items
-  const uniqueCategorySet = new Set<{ name: string; value: string }>();
+  const uniqueCategoryArray: { name: string; value: string; }[] = [];
   filteredWeblogs.forEach((blog) => {
-    uniqueCategorySet.add({
+    const category = {
       name: blog.category.name,
       value: blog.category.slug,
-    });
+    };
+
+    // Check if the category already exists in the array
+    const exists = uniqueCategoryArray.some(
+      (item) => item.name === category.name && item.value === category.value
+    );
+
+    if (!exists) {
+      uniqueCategoryArray.push(category);
+    }
   });
 
   // Apply category filtering if a category is provided
@@ -97,7 +106,7 @@ async function getPageContent(
 
   return {
     page: page || null,
-    categories: Array.from(uniqueCategorySet) || [],
+    categories: uniqueCategoryArray || [],
     weblogs: filters?.date
       ? filterByDate(filteredWeblogs, String(filters?.date))
       : filteredWeblogs,
