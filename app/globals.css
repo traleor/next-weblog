@@ -163,7 +163,7 @@ p,
 blockquote,
 strong,
 b,
-li,
+/* li, */
 label,
 caption,
 tbody,
@@ -174,10 +174,10 @@ figcaption,
 textarea,
 select,
 option,
-button,
-input {
+button
+/*, input */ {
   /* Seems not to be overridable */
-  /* margin: 1rem 0; */
+  margin: 1rem 0;
   font-size: var(--font-size-body);
 }
 
@@ -185,6 +185,10 @@ a,
 small {
   margin: 0.9rem 0;
   font-size: var(--font-size-6);
+}
+
+a:hover {
+  color: var(--tertiary);
 }
 
 iframe,

@@ -1,3 +1,5 @@
+export * from "./cms";
+import { WeblogContent } from ".";
 import { CMSContent, CMSPageMeta, CMSMediaMeta } from "@/lib";
 
 export interface CMSImage {
@@ -35,7 +37,7 @@ export interface Page {
   id: number;
   title: string;
   meta: CMSPageMeta;
-  body: any
+  body: any;
 }
 
 export interface WeblogPage {
@@ -46,8 +48,7 @@ export interface WeblogPage {
   category: WeblogCategory;
   image: WeblogImage;
   authors: WeblogAuthor[];
-  //   TODO
-  //   body: WeblogContent[];
+  body: WeblogContent[];
   tags: string[];
   date_published: string;
 }
