@@ -62,6 +62,7 @@ export async function generateMetadata(
 async function getPageContent(
   slug: string,
   filters?: {
+    search?: string | string[];
     category?: string | string[];
     order?: string | string[];
     date?: string | string[];
@@ -72,16 +73,18 @@ async function getPageContent(
   const weblog = await allBlogs({
     limit: 10,
     child_of: page.id,
-    order: filters?.order ? String(filters?.order) : "random",
+    // only add if not empty or undefined
+    ...(filters?.order && { order: String(filters?.order) }),
+    ...(filters?.search && { search: String(filters?.search) }),
   });
 
   let filteredWeblogs = weblog.items;
   // Extract unique categories from the filtered items
-  const uniqueCategoryArray: { name: string; value: string; }[] = [];
+  const uniqueCategoryArray: { name: string; value: string }[] = [];
   filteredWeblogs.forEach((blog) => {
     const category = {
-      name: blog.category.name,
-      value: blog.category.slug,
+      name: blog?.category?.name,
+      value: blog?.category?.slug,
     };
 
     // Check if the category already exists in the array
@@ -118,11 +121,12 @@ export default async function Page({
   searchParams,
 }: Props) {
   // Destructure the parameters you need
-  const { category, order, date } = searchParams || {};
+  const { category, order, date, search } = searchParams || {};
 
-  const pageData = getPageContent(path, { category, order, date });
+  const pageData = getPageContent(path, { search, category, order, date });
   const [{ page, weblogs, categories }] = await Promise.all([pageData]);
   console.group("Page");
+  console.log("Weblog", weblogs);
   console.log("Params", lang, path);
   console.log("searchParams", searchParams);
   console.groupEnd();
@@ -166,24 +170,38 @@ export default async function Page({
           </div>
 
           <div className={styles.list}>
-            <Grid num={3} style={{ gap: "2rem" }}>
-              <>
-                {weblogs?.map((blog) => (
-                  <Card
-                    key={blog.id}
-                    imgSource={
-                      cmsClient.getMediaSrc(blog.image.meta) ||
-                      "/images/cover.png"
-                    }
-                    title={truncateText(blog.headline, 90)}
-                    category={blog.category.name}
-                    text={truncateText(blog.meta.search_description || "", 90)}
-                    status={blog.date_published}
-                    path={new URL(blog.meta.html_url).pathname}
-                  />
-                ))}
-              </>
-            </Grid>
+            {weblogs.length > 0 ? (
+              <Grid num={3} style={{ gap: "2rem" }}>
+                <>
+                  {weblogs.map((blog) => (
+                    <Card
+                      key={blog.id}
+                      imgSource={
+                        (blog?.image &&
+                          cmsClient.getMediaSrc(blog?.image?.meta)) ||
+                        "/images/cover.png"
+                      }
+                      title={truncateText(blog?.headline || "", 90)}
+                      category={blog?.category?.name}
+                      text={truncateText(
+                        blog.meta.search_description || "",
+                        90
+                      )}
+                      status={blog.date_published}
+                      path={new URL(blog.meta.html_url).pathname}
+                    />
+                  ))}
+                </>
+              </Grid>
+            ) : (
+              <div className={styles.no_results}>
+                <h2>No Results Found</h2>
+                <p>
+                  We couldn&apos;t find any results matching your search. Please
+                  try again.
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>

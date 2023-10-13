@@ -10,16 +10,20 @@ const Navbar = () => {
         <Link href="/">
           <LogoIcon width={50} height={50} />
         </Link>
-        <form className={styles.search}>
-          <input type="search" placeholder="Search tutorials " />
+        <form className={styles.search} action="/tutorials" method="get">
+          <input type="search" name="search" placeholder="Search tutorials " />
           <button aria-label="search" type="submit">
             <SearchIcon color="var(--tertiary)" />
           </button>
         </form>
       </div>
 
-      <form className={`${styles.search} ${styles.only_mobile}`}>
-        <input type="search" placeholder="Search tutorials " />
+      <form
+        className={`${styles.search} ${styles.only_mobile}`}
+        action="/tutorials"
+        method="get"
+      >
+        <input type="search" name="search" placeholder="Search tutorials " />
         <button aria-label="search" type="submit">
           <SearchIcon />
         </button>

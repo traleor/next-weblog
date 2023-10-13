@@ -81,7 +81,6 @@ export const allBlogs = async (
 ): Promise<WeblogContents> => {
   const options = {
     locale: "en",
-    order: "random",
     type: "weblog.WeblogPage",
     fields: [
       "headline",
@@ -90,6 +89,9 @@ export const allBlogs = async (
       "category",
       "date_published",
     ],
+    // order: "random",
+    // only include random if not search
+    ...(queries?.search ? {} : { order: "random" }),
     ...queries,
   } as CMSQueries;
 
