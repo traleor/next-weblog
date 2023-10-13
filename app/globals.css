@@ -120,32 +120,32 @@ select {
 }
 
 b {
-  font-weight: bolder;
+  font-weight: 700;
 }
 
 h1 {
   margin: 2rem 0;
-  font-weight: bolder;
+  font-weight: 700;
   font-family: var(--libre);
   font-size: var(--font-size-1);
 }
 
 h2 {
   margin: 1.8rem 0;
-  font-weight: bolder;
+  font-weight: 700;
   font-family: var(--libre);
   font-size: var(--font-size-2);
 }
 
 h3 {
   margin: 1.6rem 0;
-  font-weight: bold;
+  font-weight: 800;
   font-size: var(--font-size-3);
 }
 
 h4 {
   margin: 1.4rem 0;
-  font-weight: bold;
+  font-weight: 700;
   font-size: var(--font-size-4);
 }
 
