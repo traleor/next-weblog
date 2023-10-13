@@ -110,7 +110,7 @@ export const getBlog = async (
 ): Promise<WeblogPage> => {
   return (await cmsClient.fetchPage(
     slug,
-    { fields: ["*"] },
+    { type: "weblog.WeblogPage", fields: ["*"] },
     undefined,
     cache
   )) as WeblogPage;

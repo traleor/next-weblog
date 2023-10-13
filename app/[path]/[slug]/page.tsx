@@ -1,16 +1,23 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./page.module.css";
+import {
+  cmsClient,
+  getPageMeta,
+  getBlog,
+  allBlogs,
+  capitalizeFirstLetter,
+  truncateText,
+} from "@/lib";
 import type { Metadata, ResolvingMetadata } from "next";
 import { Card, Grid, TraleorComments } from "@/components";
 
 type Props = {
-  params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
+  params: { lang: string; path: string; slug: string };
 };
 
 export async function generateMetadata(
-  { params: { slug } }: Props,
+  { params: { path, slug } }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // https://nextjs.org/docs/app/building-your-application/optimizing/metadata
@@ -18,33 +25,94 @@ export async function generateMetadata(
   // optionally access and extend (rather than replace) parent metadata
   const previousImages = parentMetadata?.openGraph?.images || [];
 
+  const page = await getPageMeta(slug);
+
   return {
-    title: `Blog ${slug}`,
+    title: page?.meta?.seo_title || page.title,
+    description: page?.meta?.search_description || "",
+    alternates: {
+      canonical: `/${path}/${slug}`,
+    },
+    authors: [{ name: "Academy Omen" }],
+    creator: "Academy Omen",
+    publisher: "Academy Omen",
     openGraph: {
+      type: "website",
+      title: page?.meta?.seo_title || page.title,
+      siteName: "Academy Omen",
+      url: `/${path}/${slug}`,
+      description: page?.meta?.search_description || "",
+      images: [...previousImages],
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: "@academyomen",
+      creator: "@academyomen",
+      title: page?.meta?.seo_title || page.title,
+      description: page?.meta?.search_description || "",
       images: [...previousImages],
     },
   };
 }
 
-export default async function Page({ params: { slug } }: Props) {
+async function getPageContent(slug: string) {
+  try {
+    // TODO: Add nocache to always get the updated content
+    const weblog = await getBlog(slug);
+    const blogs = await allBlogs({ limit: 3 });
+
+    return {
+      weblog: weblog,
+      blogs: blogs.items,
+    };
+  } catch (error) {
+    console.error("Slug Page: Error fetching page content", error);
+    return {
+      weblog: null,
+      blogs: null,
+    };
+  }
+}
+
+export default async function Page({ params: { lang, path, slug } }: Props) {
+  const pageData = getPageContent(slug);
+  const [{ weblog, blogs }] = await Promise.all([pageData]);
+  console.group("Page");
+  console.log("Params", lang, path, slug);
+  // console.log("Weblog", weblog);
+  console.groupEnd();
+
+  if (!weblog) {
+    return (
+      <div className={styles.blog_container}>
+        <h1>Oups, this page doesn&apos;t exist</h1>
+        <p>
+          The page you are looking for might have been removed, had its name
+          changed or is temporarily unavailable.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.blog_container}>
-      <h1>
-        Unlock Your Full Potential with World-Class Software Engineering
-        Tutorials {slug}
-      </h1>
+      <h1>{weblog.headline}</h1>
 
       <div className={styles.blog_cover}>
         <Image
           loading="lazy"
           width="1920"
           height="1080"
-          src="/images/cover.png"
-          alt="illustration"
+          src={
+            weblog?.image
+              ? cmsClient.getMediaSrc(weblog?.image?.meta) || ""
+              : "/images/cover.png"
+          }
+          alt={weblog?.image?.title || "Blog Image"}
         />
       </div>
       <div className={styles.breadcrumbs}>
-        <Link href={"/tutorials"}>Tutorials</Link>{" "}
+        <Link href={`/${path}`}>{capitalizeFirstLetter(path)}</Link>
         <svg
           width="21"
           height="21"
@@ -57,16 +125,29 @@ export default async function Page({ params: { slug } }: Props) {
             fill="black"
           />
         </svg>
-        <Link href={"/"}>Technology</Link>
+        <Link href={`/${path}/${slug}`}>{capitalizeFirstLetter(slug)}</Link>
       </div>
+      <p>{weblog.date_published}</p>
       <div className={styles.profile}>
         <Image
           width="60"
           height="60"
-          src={"/images/profile-sqr.jpg"}
-          alt={"Peng Boris"}
+          src={
+            weblog.authors && weblog.authors.length > 0
+              ? weblog?.authors[0]?.image.file
+              : "/images/profile-sqr.jpg"
+          }
+          alt={
+            weblog.authors && weblog.authors.length > 0
+              ? weblog?.authors[0]?.first_name
+              : "Author Image"
+          }
         />
-        <p>Peng Boris</p>
+        <p>
+          {weblog.authors && weblog.authors.length > 0
+            ? weblog.authors[0].first_name + " " + weblog.authors[0].last_name
+            : ""}
+        </p>
       </div>
       <section>
         <h2>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</h2>
@@ -162,18 +243,11 @@ model.save("model.h5")`}
         </p>
       </section>
       <div className={styles.tags}>
-        <span>
-          <Link href={"/"}>business</Link>
-        </span>
-        <span>
-          <Link href={"/"}>business</Link>
-        </span>
-        <span>
-          <Link href={"/"}>business</Link>
-        </span>
-        <span>
-          <Link href={"/"}>business</Link>
-        </span>
+        {weblog.tags?.map((tag) => (
+          <span key={tag}>
+            <Link href={"#"}>{tag}</Link>
+          </span>
+        ))}
       </div>
       <div className={styles.comments}>
         <TraleorComments />
@@ -181,39 +255,21 @@ model.save("model.h5")`}
       <div className={styles.related}>
         <h2>Related Tutorials</h2>
         <Grid num={3}>
-          <Card
-            key={1}
-            imgSource={"/images/cover.png"}
-            title={"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
-            category={"Technology"}
-            text={
-              "Music Festival in Douala. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc"
-            }
-            status="Active"
-            path={`/tutorials/${1}`}
-          />
-          <Card
-            key={1}
-            imgSource={"/images/cover.png"}
-            title={"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
-            category={"Technology"}
-            text={
-              "Music Festival in Douala. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc"
-            }
-            status="Active"
-            path={`/tutorials/${1}`}
-          />
-          <Card
-            key={1}
-            imgSource={"/images/cover.png"}
-            title={"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
-            category={"Technology"}
-            text={
-              "Music Festival in Douala. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc"
-            }
-            status="Active"
-            path={`/tutorials/${1}`}
-          />
+          <>
+            {blogs?.map((blog) => (
+              <Card
+                key={blog.id}
+                imgSource={
+                  cmsClient.getMediaSrc(blog.image.meta) || "/images/cover.png"
+                }
+                title={truncateText(blog.headline, 90)}
+                category={blog.category.name}
+                text={truncateText(blog.meta.search_description || "", 90)}
+                status={blog.date_published}
+                path={new URL(blog.meta.html_url).pathname}
+              />
+            ))}
+          </>
         </Grid>
       </div>
     </div>

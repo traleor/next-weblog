@@ -32,8 +32,8 @@ export async function generateMetadata(
   // console.log("PAGE META", JSON.stringify(page, null, 4));
 
   return {
-    title: page.meta.seo_title || page.title,
-    description: page.meta.search_description || "",
+    title: page?.meta?.seo_title || page.title,
+    description: page?.meta?.search_description || "",
     alternates: {
       canonical: `/${path}`,
     },
@@ -42,18 +42,18 @@ export async function generateMetadata(
     publisher: "Academy Omen",
     openGraph: {
       type: "website",
-      title: page.meta.seo_title || page.title,
+      title: page?.meta?.seo_title || page.title,
       siteName: "Academy Omen",
       url: `/${path}`,
-      description: page.meta.search_description || "",
+      description: page?.meta?.search_description || "",
       images: [...previousImages],
     },
     twitter: {
       card: "summary_large_image",
       site: "@academyomen",
       creator: "@academyomen",
-      title: page.meta.seo_title || page.title,
-      description: page.meta.search_description || "",
+      title: page?.meta?.seo_title || page.title,
+      description: page?.meta?.search_description || "",
       images: [...previousImages],
     },
   };
@@ -72,7 +72,7 @@ async function getPageContent(
   const weblog = await allBlogs({
     limit: 10,
     child_of: page.id,
-    order: String(filters?.order),
+    order: filters?.order ? String(filters?.order) : "random",
   });
 
   let filteredWeblogs = weblog.items;
