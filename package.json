@@ -20,6 +20,6 @@
     "server-only": "^0.0.1",
     "sharp": "^0.32.6",
     "typescript": "^5.2.2",
-    "wagtail-js": "^0.0.4"
+    "wagtail-js": "^1.0.0"
   }
 }
