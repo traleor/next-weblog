@@ -113,7 +113,7 @@ export default async function Page({ params: { lang, path, slug } }: Props) {
         />
       </div>
       <div className={styles.breadcrumbs}>
-        <Link href={`/${path}`}>{capitalizeFirstLetter(path)}</Link>
+        <Link href="/">Home</Link>
         <svg
           width="21"
           height="21"
@@ -126,7 +126,7 @@ export default async function Page({ params: { lang, path, slug } }: Props) {
             fill="black"
           />
         </svg>
-        <Link href={`/${path}/${slug}`}>{capitalizeFirstLetter(slug)}</Link>
+        <Link href={`/${path}`}>{capitalizeFirstLetter(path)}</Link>
       </div>
       <p>{weblog.date_published}</p>
       <div className={styles.profile}>
