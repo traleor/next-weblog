@@ -5,6 +5,12 @@
   -webkit-box-sizing: border-box;
 }
 
+html {
+  font: inherit;
+  /* resets font-size too */
+  font-size: 100%;
+}
+
 html,
 body,
 div,
@@ -66,10 +72,8 @@ input {
   color: black;
   /* 
   1. applied before all styles, hence global font styles not applied
-  2. resets font-size too
+  Fix: Added above
   */
-  /* font: inherit; */
-  font-size: 100%;
   vertical-align: baseline;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
