@@ -64,8 +64,11 @@ input {
   padding: 0;
   border: 0;
   color: black;
-  /* resets font-size too */
-  font: inherit;
+  /* 
+  1. applied before all styles, hence global font styles not applied
+  2. resets font-size too
+  */
+  /* font: inherit; */
   font-size: 100%;
   vertical-align: baseline;
   text-rendering: optimizeLegibility;
