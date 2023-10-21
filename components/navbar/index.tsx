@@ -31,7 +31,11 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <button className="primary">Watch Tutorial</button>
+          <Link href="https://youtu.be/3Gidb2Zh_V4" target="_blank" passHref>
+            <button aria-label="Watch Tutorial" className="primary">
+              Watch Tutorial
+            </button>
+          </Link>
         </li>
       </ul>
     </nav>
