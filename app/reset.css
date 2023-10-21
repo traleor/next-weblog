@@ -5,12 +5,6 @@
   -webkit-box-sizing: border-box;
 }
 
-html {
-  font: inherit;
-  /* resets font-size too */
-  font-size: 100%;
-}
-
 html,
 body,
 div,
@@ -68,7 +62,6 @@ option,
 input {
   margin: 0;
   padding: 0;
-  border: 0;
   color: black;
   /* 
   1. applied before all styles, hence global font styles not applied
@@ -133,6 +126,7 @@ input {
 /**
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Reset font and font size in all browsers.
  */
 
 html {
@@ -140,6 +134,10 @@ html {
   /* 1 */
   -webkit-text-size-adjust: 100%;
   /* 2 */
+  font: inherit;
+  /* resets font-size too */
+  font-size: 100%;
+  /* 3 */
 }
 
 button {

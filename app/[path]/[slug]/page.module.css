@@ -19,11 +19,13 @@
   color: var(--tertiary);
 }
 
+.info {
+  margin: 1rem 0 4rem 0;
+}
 .profile {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin: 1rem 0 4rem 0;
 }
 
 .profile img {

@@ -98,7 +98,7 @@ export default async function Page({ params: { lang, path, slug } }: Props) {
   return (
     <div className={styles.blog_container}>
       <h1>{weblog.headline}</h1>
-
+      <p>Date Published: {weblog.date_published}</p>
       <div className={styles.blog_cover}>
         <Image
           loading="lazy"
@@ -128,28 +128,30 @@ export default async function Page({ params: { lang, path, slug } }: Props) {
         </svg>
         <Link href={`/${path}`}>{capitalizeFirstLetter(path)}</Link>
       </div>
-      <p>{weblog.date_published}</p>
-      <div className={styles.profile}>
-        <Image
-          width="60"
-          height="60"
-          src={
-            weblog.authors && weblog.authors.length > 0
-              ? weblog?.authors[0]?.image.file
-              : "/images/profile-sqr.jpg"
-          }
-          alt={
-            weblog.authors && weblog.authors.length > 0
-              ? weblog?.authors[0]?.first_name
-              : "Author Image"
-          }
-        />
-        <p>
-          {weblog.authors && weblog.authors.length > 0
-            ? weblog.authors[0].first_name + " " + weblog.authors[0].last_name
-            : ""}
-        </p>
+      <div className={styles.info}>
+        <div className={styles.profile}>
+          <Image
+            width="60"
+            height="60"
+            src={
+              weblog.authors && weblog.authors.length > 0
+                ? weblog?.authors[0]?.image.file
+                : "/images/profile-sqr.jpg"
+            }
+            alt={
+              weblog.authors && weblog.authors.length > 0
+                ? weblog?.authors[0]?.first_name
+                : "Author Image"
+            }
+          />
+          <p>
+            {weblog.authors && weblog.authors.length > 0
+              ? weblog.authors[0].first_name + " " + weblog.authors[0].last_name
+              : ""}
+          </p>
+        </div>
       </div>
+
       <section>
         {weblog?.body?.map((block) => (
           <WeblogBlockRenderer key={block.id} content={block} />
