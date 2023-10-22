@@ -43,11 +43,8 @@ export const allPageMeta = async (
   const options = {
     locale: lang || "en",
     order: "random",
+    ...(type ? { type: type } : {}),
   } as CMSQueries;
-
-  if (type !== undefined) {
-    options.type = type;
-  }
 
   return (await cmsClient.fetchPages(options)) as PageContents;
 };
@@ -64,10 +61,9 @@ export const getPageMeta = async (
   const options = {
     locale: lang || "en",
     fields: ["seo_title", "search_description"],
+    ...(type ? { type: type } : {}),
   } as CMSQueries;
-  if (type !== undefined) {
-    options.type = type;
-  }
+
   return (await cmsClient.fetchPage(slug, options, undefined, cache)) as Page;
 };
 
