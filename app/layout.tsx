@@ -45,13 +45,7 @@ export default function RootLayout({
           strategy="afterInteractive"
           src="https://umami.svc.traleor.com/script.js"
           data-website-id="b23f9060-da43-4f3f-b9ce-1394081b2033"
-        ></Script>
-        <Script
-          defer
-          data-domain="traleor.com"
-          strategy="afterInteractive"
-          src="https://plausible.svc.traleor.com/js/script.js"
-        ></Script>
+        />
       </head>
       <body
         className={`${montserrat.variable} ${libre.variable} ${source_code.variable}`}
