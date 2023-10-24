@@ -4,6 +4,7 @@ import { AppConfig } from "@/config";
 import type { Metadata } from "next";
 import { montserrat, libre, source_code } from "@/lib";
 import { Footer, Navbar } from "@/components";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   metadataBase: new URL(AppConfig.NEXT_PUBLIC_BASE_URL),
@@ -39,6 +40,18 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="author" content="Academy Omen" />
+        <Script
+          async
+          strategy="afterInteractive"
+          src="https://umami.svc.traleor.com/script.js"
+          data-website-id="b23f9060-da43-4f3f-b9ce-1394081b2033"
+        ></Script>
+        <Script
+          defer
+          data-domain="traleor.com"
+          strategy="afterInteractive"
+          src="https://plausible.svc.traleor.com/js/script.js"
+        ></Script>
       </head>
       <body
         className={`${montserrat.variable} ${libre.variable} ${source_code.variable}`}
