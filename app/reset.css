@@ -64,8 +64,9 @@ input {
   padding: 0;
   color: black;
   /* 
-  1. applied before all styles, hence global font styles not applied
-  Fix: Added above
+  font: inherit;
+  1. Removed font changes because it's applied before all styles, 
+  hence global font styles not applied
   */
   vertical-align: baseline;
   text-rendering: optimizeLegibility;
