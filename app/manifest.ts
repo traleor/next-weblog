@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 
+// Generate images here: https://www.pwabuilder.com/imageGenerator
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Next Pro Weblog",

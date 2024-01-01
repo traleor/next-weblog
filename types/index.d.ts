@@ -30,6 +30,7 @@ export interface WeblogAuthor {
   job_title: string;
   biography: string;
   thumbnail: string;
+  // TODO: Add this
   social_links: WeblogSocialLink[];
 }
 
