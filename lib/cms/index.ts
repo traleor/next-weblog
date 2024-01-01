@@ -10,6 +10,8 @@ import {
   CMSQueries,
 } from "wagtail-js";
 
+// TODO: ADD TRY CATCH TO ALL FUNCTIONS
+
 const CMS_API_KEY = AppConfig.CMS_API_KEY;
 const CMS_API_URL = AppConfig.CMS_API_URL;
 
