@@ -21,6 +21,7 @@ type PageType = "cms.HomePage" | "weblog.WeblogIndex" | "weblog.WeblogPage";
 export const cmsClient = new CMSClient({
   baseURL: CMS_API_URL,
   apiPath: "/api/cms/v2",
+  mediaBaseURL: "https://cdn.traleor.com",
   headers: {
     "Traleor-Api-Key": CMS_API_KEY,
   },

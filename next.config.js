@@ -14,7 +14,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: CMS_API_DOMAIN,
+        hostname: "**.traleor.com",
       },
     ],
   },
