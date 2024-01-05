@@ -133,7 +133,9 @@ export default async function Page({
 
   // If page is WebBlogIndex, then render below
   // else render content
-  if (page.meta.type === "weblog.WeblogIndex") {
+  console.log(`logging the value of the page ${page?.meta?.type}`);
+
+  if (page?.meta?.type === "weblog.WeblogIndex") {
     return (
       <div className={styles.page_container}>
         <div className={styles.sort}>
@@ -210,7 +212,7 @@ export default async function Page({
     return (
       <div className={styles.page_container}>
         <h1>{page.title}</h1>
-        <h2>{page.meta.search_description}</h2>
+        <h2>{page?.meta?.search_description}</h2>
       </div>
     );
   }
