@@ -269,3 +269,12 @@ code {
 .my-4 {
   margin: 4rem 0;
 }
+
+.cuttoff-text {
+  --max-lines: 2;
+  overflow: hidden;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--max-lines);
+}

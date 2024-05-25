@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -64,7 +65,10 @@ const Card: React.FC<CardPropsType> = ({
               }}
               className={styles.title}
             >
-              <h2 style={{ ...(titleSize ? { fontSize: titleSize } : {}) }}>
+              <h2
+                className="cuttoff-text"
+                style={{ ...(titleSize ? { fontSize: titleSize } : {}) }}
+              >
                 {title}
               </h2>
               {profilePic && <h3>{status}</h3>}
@@ -76,7 +80,7 @@ const Card: React.FC<CardPropsType> = ({
               </div>
             )}
             <div className={styles.flex}>
-              <p>{text}</p>
+              <p className="cuttoff-text">{text}</p>
             </div>
           </div>
         </article>
