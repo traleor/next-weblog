@@ -1,5 +1,5 @@
 .navbar {
-  padding: 1.5rem var(--content-margin);
+  padding: 0 var(--content-margin);
   display: flex;
   display: -webkit-flex;
   width: 100%;
