@@ -11,6 +11,7 @@ import {
 } from "@/types";
 import Link from "next/link";
 import { ImageAtom } from "./atoms";
+import { AppConfig } from "@/config";
 
 interface WeblogBlockRendererProps {
   content: WeblogContent;
@@ -25,11 +26,12 @@ const FullRichTextBlock: React.FC<FullRichTextContent> = ({ value }) => {
 };
 
 const CtaBlock: React.FC<CtaBlockContent> = ({ value }) => {
-  //   console.log("CTA", value);
+  const pageUrl =
+    value?.link_page?.url &&
+    AppConfig.NEXT_PUBLIC_BASE_URL + value?.link_page?.url;
   return (
     <Link
-      // TODO: Link page is returned as id e.g 1, 2, 3, not as slug
-      href={String(value.link_url) || ""}
+      href={pageUrl || String(value.link_url) || ""}
       target={value.open_in_new_tab ? "_blank" : "_self"}
     >
       {value.text || ""}
@@ -58,6 +60,9 @@ const ImageBlock: React.FC<ImageBlockContent> = ({ value }) => {
 };
 
 const BannerBlock: React.FC<BannerBlockContent> = ({ id, value }) => {
+  const pageUrl =
+    value?.hero_link.link_page?.url &&
+    AppConfig.NEXT_PUBLIC_BASE_URL + value?.hero_link.link_page?.url;
   return (
     <section id={id}>
       <div>
@@ -67,10 +72,7 @@ const BannerBlock: React.FC<BannerBlockContent> = ({ id, value }) => {
         </h3>
         <ImageAtom image={value.image} />
         <Link
-          href={
-            // TODO: Link page is returned as id e.g 1, 2, 3, not as slug
-            String(value.hero_link.link_url) ?? ""
-          }
+          href={(pageUrl || String(value.hero_link.link_url)) ?? ""}
           target={value.hero_link.open_in_new_tab ? "_blank" : "_self"}
         >
           {value.hero_link.text || ""}
@@ -79,59 +81,6 @@ const BannerBlock: React.FC<BannerBlockContent> = ({ id, value }) => {
     </section>
   );
 };
-
-{
-  /* <div className="block-code_block">
-  {" "}
-  <section className="default-padding full-width">
-    <pre className="language-python">
-      <code className="language-python">
-        {`# Preparing Dataset
-# temporal storage for labels and images
-data=[]
-labels=[]
-
-# Cat 0
-# Get the animal directory
-cats = os.listdir(os.getcwd() + "/CNN/data/cat")
-for x in cats:
-    """
-    Loop through all the images in the directory
-    1. Convert to arrays
-    2. Resize the images
-    3. Add image to dataset
-    4. Add the label
-    """
-    imag=cv2.imread(os.getcwd() + "/CNN/data/cat/" + x)
-    img_from_ar = Image.fromarray(imag, 'RGB')
-    resized_image = img_from_ar.resize((50, 50))
-    data.append(np.array(resized_image))
-    labels.append(0)
-
-# load in animals and labels
-animals=np.array(data)
-labels=np.array(labels)
-# save
-np.save("animals",animals)
-np.save("labels",labels)
-
-# Train Model
-# train through 100 times
-history = model.fit(x_train, y_train, epochs=100,
-                    validation_data=(x_test, y_test))
-
-# perform validation and get accuracy
-test_loss, test_acc = model.evaluate(x_test,  y_test, verbose=2)
-
-print(test_acc)
-
-# save the model or brain
-model.save("model.h5")`}
-      </code>
-    </pre>
-  </section>
-</div>; */
-}
 
 const CodeBlock: React.FC<CodeBlockContent> = ({ value }) => {
   return (

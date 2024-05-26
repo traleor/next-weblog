@@ -27,7 +27,12 @@ export interface CtaBlockContent {
 
 export interface CtaBlockValue {
   text: string;
-  link_page: string | null;
+  link_page: {
+    id: string;
+    title: string;
+    slug: string;
+    url?: string;
+  };
   link_url: string;
   open_in_new_tab: boolean;
 }
