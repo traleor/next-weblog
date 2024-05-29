@@ -1,3 +1,5 @@
+export * from "./cms";
+import { WeblogContent } from ".";
 import { CMSContent, CMSPageMeta, CMSMediaMeta } from "@/lib";
 
 export interface CMSImage {
@@ -28,7 +30,15 @@ export interface WeblogAuthor {
   job_title: string;
   biography: string;
   thumbnail: string;
+  // TODO: Add this
   social_links: WeblogSocialLink[];
+}
+
+export interface Page {
+  id: number;
+  title: string;
+  meta: CMSPageMeta;
+  body: any;
 }
 
 export interface WeblogPage {
@@ -39,8 +49,21 @@ export interface WeblogPage {
   category: WeblogCategory;
   image: WeblogImage;
   authors: WeblogAuthor[];
-  //   TODO
-  //   body: WeblogContent[];
+  body: WeblogContent[];
   tags: string[];
   date_published: string;
+}
+
+export interface PageContents {
+  meta: {
+    total_count: number;
+  };
+  items: Page[];
+}
+
+export interface WeblogContents {
+  meta: {
+    total_count: number;
+  };
+  items: WeblogPage[];
 }
