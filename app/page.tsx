@@ -2,8 +2,26 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./page.module.css";
 import { Card, Grid } from "@/components";
+import { allBlogs, cmsClient } from "@/lib";
 
-export default function Page() {
+// no-cache as RequestCache is sufficient, an alternative is to use revalidate
+export const revalidate = 3600; // every hour
+
+async function getBlogs(limit: number) {
+  const blogs = await allBlogs({ limit });
+  return {
+    blogs: blogs.items || null,
+  };
+}
+
+export default async function Page() {
+  const blogsData = getBlogs(3);
+  // Wait for the promises to resolve
+  const [{ blogs }] = await Promise.all([blogsData]);
+  console.group("HOME PAGE");
+  console.log("Blogs: ", blogs);
+  console.groupEnd();
+
   return (
     <div className={styles.container}>
       <div className={styles.landing}>
@@ -73,28 +91,19 @@ export default function Page() {
         </div>
         <div className={styles.wrapper}>
           <Grid num={3}>
-            <Card
-              key={1}
-              imgSource={"/images/cover.png"}
-              title={"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
-              category={"Technology"}
-              text={
-                "Music Festival in Douala. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc"
-              }
-              status="Active"
-              path={`/blog/${1}`}
-            />
-            <Card
-              key={1}
-              imgSource={"/images/cover.png"}
-              title={"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
-              category={"Technology"}
-              text={
-                "Music Festival in Douala. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc"
-              }
-              status="Active"
-              path={`/blog/${1}`}
-            />
+            {blogs?.map((blog) => (
+              <Card
+                key={blog.id}
+                imgSource={
+                  cmsClient.getMediaSrc(blog.image.meta) || "/images/cover.png"
+                }
+                title={blog.headline}
+                category={blog.category.name}
+                text={blog.meta.search_description || "No description"}
+                status={blog.date_published}
+                path={new URL(blog.meta.html_url).pathname}
+              />
+            ))}
           </Grid>
         </div>
         <div className={styles.headline}>

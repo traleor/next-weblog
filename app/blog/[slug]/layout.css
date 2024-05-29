@@ -11,6 +11,9 @@ video {
   max-inline-size: 100%;
   block-size: auto;
 }
+b {
+  color: red;
+}
 
 /* Styles for code blocks */
 .block-code_block {

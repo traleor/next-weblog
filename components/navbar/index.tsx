@@ -23,7 +23,7 @@ const Navbar = () => {
       </label>
       <ul className={`${styles.menu}`}>
         <li>
-          <Link href="/blog">Tutorials</Link>
+          <Link href="/blog">Blogs</Link>
         </li>
         <li>
           <Link href="/about" scroll={false}>
